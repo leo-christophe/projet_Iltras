@@ -1,0 +1,51 @@
+ind	obj	nom	rar	att	def	vie	cha	val	cof	ctl
+0	potion_pv	Potion de vie	com	0	0	20	0	20	1	30
+1	grosse_potion_pv	Grosse potion de vie	rar	0	0	50	0	100	1	20
+2	elexir_de_chance	Eléxir de chance	rar	0	0	0	15	175	1	10
+3	epee_de_chevalier	Épée de chevalier	com	3	1	0	0	50	1	10
+4	lance	Lance	com	2	0	0	0	20	1	10
+5	arc_elf	Arc elf	rar	4	0	0	3	150	1	5
+6	arc_humain	Arc humain	com	2	0	0	0	70	1	10
+7	hache	Hache	com	4	0	0	0	50	1	10
+8	pieux	Pieux	com	1	0	0	0	10	1	10
+9	dague	Dague	com	3	0	0	0	80	1	10
+10	poignard	Poignard	com	4	0	0	0	90	1	10
+11	hallebarde	Hallebarde	com	4	2	0	0	125	1	10
+12	seax	Seax	leg	10	0	0	5	3000	0	
+13	katana	Katana	epi	8	4	0	0	1250	0	
+14	masse_d'arme	Masse d'arme	rar	7	0	0	0	300	1	10
+15	marteau	Marteau	com	4	0	0	0	190	1	10
+16	ecu	Écu	com	0	8	0	0	110	1	10
+17	bocle	Bocle	com	0	3	0	0	40	1	10
+18	pavois	Pavois	rar	0	12	0	0	200	0	
+19	bouclier_viking	Bouclier de viking	rar	1	7	0	0	210	1	10
+20	casque	Casque	com	0	3	0	0	80	1	10
+21	gants	Gants	com	0	1	0	0	20	1	10
+22	bottes	Bottes	com	0	2	0	0	50	1	10
+23	armure_de_chevalier	Armure de chevalier	epi	2	10	0	0	2021	0	
+24	tunique_cuir	Tunique en cuir	com	0	2	0	0	30	1	20
+25	cote_maille	Cote de maille	rar	0	4	0	0	110	1	10
+26	nox	Nox	leg	0	0	0	0	4000	0	
+27	bonnet_de_lutin	Bonnet de lutin	rar	0	2	0	5	325	0	
+28	gilet_jaune	Gilet jauné	leg	2	3	0	0	1800	0	
+29	epee_legendaire	Épée légendaire	leg	20	5	0	0	15000	0	
+30	biere	Pinte de bière	com	0	0	5	0	5	0	
+31	delafontaine	De la Fontaine	com	0	0	0	0	1	0	
+32	chili_epice	Chili épicé	rar	2	0	10	0	15	0	
+33	cote_de_boeuf	Côte de bœuf	com	0	0	7	0	10	0	
+34	cuir	Cuir	com	0	0	0	0	15	0	
+35	carburant_fq	Carburant de faible qualité	com	0	0	0	0	12	1	20
+36	carburant_hq	Carburant de haute qualité	rar	0	0	0	0	33	1	15
+37	lame-brise	Lame brisée	com	0	0	1	0	7	1	30
+38	medaille_rouille	Médaille rouillée	com	0	0	0	0	10	1	20
+39	trophe_5_maisons	Trophé des cinq maison	leg	0	0	0	0	100000	1	2
+40	coupe_d_argent	Coupe d'argent	rar	0	0	0	0	225	1	7
+41	chaine_d_or	Chaine d'or	epi	0	0	0	0	500	1	5
+42	diamant_d_innocence	Diamant d'innocence	leg	5	5	10	5	20000	1	4
+43	boule_de_slime	Boule de slime	com	0	0	0	0	5		
+44	corne_de_gobelin	Corne de gobelin	com	0	0	0	0	7		
+45	crochet_de_serpent	Crochet de serpent	com	0	0	0	0	4		
+46	dents_de_requin	Dents de requin	com	0	0	0	0	10		
+47	peaux_de_lapin	Peaux de lapin	com	0	0	0	0	10		
+48	petit_couteau	Petit couteaux	com	1	0	0	0	10		
+49										

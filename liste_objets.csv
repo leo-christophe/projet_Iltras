@@ -1,0 +1,136 @@
+ind,obj,nom,rar,att,def,vie,chance,valeur,cof,zon_min,ctl,lootmonstr,typ1,typ2,chanceloot,ou,Bouti-achet,typ,vendable,elixir
+0,potion_pv,Potion de vie,com,0,0,20,0,13,1,0,30,1,magie,obj,80,85,999,util,1,1
+1,grosse_potion_pv,Grosse potion de vie,rar,0,0,30,0,25,1,3,20,1,magie,obj,70,86,1,util,1,1
+2,elixir_de_chance,Élixir de chance,rar,0,0,0,5,80,1,1,10,0,0,0,40,85,1,util,1,1
+3,epee_de_chevalier,Épee de chevalier,com,10,1,0,5,200,1,7,10,1,obj,0,10,14,3,arme,1,0
+4,lance,Lance,com,3,0,0,0,20,1,8,10,1,humanoide,humano_monstre,20,58,1,arme,1,0
+5,arc_elf,Arc d'elf,rar,5,0,0,0,150,1,8,5,1,humanoide,obj,30,108,404,arme,1,0
+6,arc_humain,Arc d'humain,com,3,0,0,0,70,1,1,10,1,humanoide,obj,60,10,1,arme,1,0
+7,hache,Hache,com,5,0,0,0,130,1,1,10,1,humanoide,0,30,13,3,arme,1,0
+8,pieux,Pieux,com,3,0,0,0,10,1,3,10,1,humanoide,obj,40,9,0,arme,1,0
+9,dague,Dague,com,4,0,0,0,75,1,3,10,1,humanoide,obj,30,2,2,arme,1,0
+10,poignard,Poignard,com,6,0,0,0,90,1,3,10,1,humanoide,obj,30,2,2,arme,1,0
+11,hallebarde,Hallebarde,com,7,2,0,0,125,1,4,10,0,0,0,0,13,2,arme,1,0
+12,seax,Seax,epi,15,0,0,0,375,0,4,0,0,leg,0,0,13,4,arme,0,0
+13,katana,Katana,epi,8,4,0,0,150,0,4,0,0,0,0,0,118,4,arme,1,0
+14,masse_d'arme,Masse d'arme,rar,7,0,0,0,130,1,4,10,0,0,0,0,19,4,arme,1,0
+15,marteau,Marteau,com,4,0,0,0,70,1,1,10,1,humanoide,obj,23,27,3,arme,1,0
+16,ecu,Écu,com,0,8,0,0,65,1,3,10,0,0,0,30,14,404,armure,1,0
+17,bocle,Bocle,com,0,3,0,0,18,1,1,10,1,humanoide,obj,15,12,3,armure,1,0
+18,pavois,Pavois,rar,0,12,0,0,130,0,3,0,1,humanoide,0,9,12,2,armure,1,0
+19,bouclier_viking,Bouclier de viking,rar,1,9,0,0,80,1,3,10,1,humanoide,obj,8,23,3,armure,1,0
+20,casque,Casque,com,0,3,0,0,55,1,1,10,1,humanoide,obj,0,11,2,armure,1,0
+21,gants,Gants,com,0,1,0,0,7,1,1,10,1,humanoide,obj,0,11,2,armure,1,0
+22,bottes,Bottes,com,0,2,0,0,20,1,1,10,1,humanoide,obj,0,11,2,armure,1,0
+23,armure_de_chevalier,Armure de chevalier,epi,0,15,0,0,105,0,5,0,1,humanoide,0,0,14,4,armure,0,0
+24,tunique_cuir,Tunique en cuir,com,0,3,0,0,30,1,1,20,1,humanoide,obj,50,10,1,armure,1,0
+25,cote_maille,Cote de maille,rar,0,4,0,0,60,1,9,10,1,humanoide,obj,7,73,1,armure,1,0
+26,nox,Nox,epi,15,0,0,0,375,0,9,0,0,leg,0,0,70,3,arme,0,0
+27,bonnet_de_lutin,Bonnet de lutin,rar,0,2,0,5,40,0,5,0,0,0,0,0,23,2,armure,1,0
+28,gilet_jaune,Gilet jaune,rar,2,3,0,0,80,0,7,0,0,0,0,0,23,2,armure,1,0
+29,epee_legendaire,Épee legendaire,leg,20,5,0,0,500,1,10,1,1,humanoide,0,1,67,4,arme,0,0
+30,biere,Pinte de bière,com,0,0,5,0,5,0,1,0,1,humanoide,obj,30,10,0,util,1,0
+31,delafontaine,De la Fontaine,com,0,0,2,0,1,0,6,0,1,humanoide,obj,80,26,0,util,1,0
+32,chili_epice,Chili épicé,rar,0,0,10,0,15,0,9,0,1,humanoide,obj,30,96,4,util,1,0
+33,cote_de_boeuf,Côte de boeuf,com,0,0,7,0,5,0,1,0,1,humanoide,obj,30,109,1,util,1,0
+34,cuir,Cuir,com,0,0,0,0,15,0,1,0,1,fourrure,0,40,109,404,loot,1,0
+35,carburant_fq,Carburant de faible qualitée,com,0,0,0,0,12,1,1,20,0,obj,0,0,23,404,loot,1,0
+36,carburant_hq,Carburant de haute qualitée,rar,0,0,0,0,33,1,1,15,0,obj,0,0,23,404,loot,1,0
+37,lame_brise,Lame brisée,com,0,0,0,0,7,1,1,30,1,humanoide,humano_monstre,30,73,404,loot,1,0
+38,medaille_rouille,Medaille rouillée,com,0,0,0,0,10,1,1,20,1,humanoide,leg,30,88,404,loot,1,0
+39,trophe_5_maisons,Trophé des cinq maisons,leg,0,0,0,0,200,1,4,2,1,leg,obj,7,94,404,inut,0,0
+40,coupe_d_argent,Coupe d'argent,rar,0,0,0,0,250,1,4,7,1,humanoide,obj,6,95,404,inut,1,0
+41,chaine_d_or,Chaine d'or,epi,0,0,0,0,100,1,4,5,1,humanoide,roche,15,97,404,inut,1,0
+42,diamant_d_innocence,Diamant d'innocence,leg,5,5,10,5,300,1,1,4,1,leg,obj,2,43,404,arme,1,0
+43,boule_de_slime,Boule de slime,com,0,0,0,0,4,0,1,0,1,slime,0,25,0,404,inut,1,0
+44,corne_de_gobelin,Corne de gobelin,com,0,0,0,0,7,0,1,0,1,gobelin,obj,25,2,404,inut,1,0
+45,crochet_de_serpent,Crochet de serpent,com,0,0,0,0,4,0,1,0,1,serpent,0,25,4,404,inut,1,0
+46,dents_de_requin,Dents de requin,com,0,0,0,0,10,0,1,0,1,requin,obj,25,25,404,inut,1,0
+47,peaux_de_lapin,Peau de lapin,com,0,0,0,0,10,0,1,0,1,lapin,,25,7,404,inut,1,0
+48,petit_couteau,Petit couteaux,com,2,0,0,0,10,0,1,0,1,humanoide,humano_monstre,25,59,0,arme,1,0
+49,bous_bois,Bout de bois,com,1,0,0,0,1,0,1,0,1,nature,0,60,98,0,arme,1,0
+50,aile_insecte,Aile d'insecte,com,0,0,1,0,2,1,1,40,1,insecte,0,89,49,404,util,1,0
+51,fourrure_monstre,Fourrure de monstre,com,0,0,0,0,3,0,1,35,1,fourrure,0,75,1,1,inut,1,0
+52,medaillon_res_froid,Medaillon de résistance au froid,epi,0,0,0,0,400,1,1,3,0,magie,obj,0,110,0,inut,0,0
+53,medaillon_res_feu,Medaillon de résistance au feu,epi,0,0,0,0,400,1,7,3,0,magie,obj,0,99,4,inut,0,0
+54,medaillon_res_pois,Medaillon de résistance au poison,epi,0,0,0,0,400,1,6,3,0,magie,obj,0,100,2,inut,0,0
+55,armure_carbyne,Armure complète en carbyne,epi,0,30,0,0,500,1,7,2,0,humanoide,leg,0,111,4,armure,0,0
+56,epee_carbyne,Épee en carbyne,epi,17,0,0,0,425,1,7,2,0,humanoide,leg,0,111,4,arme,0,0
+57,potion_pv_hq,Potion de vie de haute qualité,epi,0,0,75,0,75,1,8,10,1,magie,humanoide,40,999,3,util,1,1
+58,potion_cha_hq,Potion de chance de haute qualité,epi,0,0,0,15,250,1,8,10,1,humanoide,magie,40,999,3,util,1,1
+59,armure_piq,Armure à épines,rar,0,15,0,0,375,1,4,8,0,obj,epine,0,78,3,armure,0,0
+60,pomme,Pomme,com,0,0,5,0,2,0,0,0,1,humanoide,obj,90,10,0,fruit,1,0
+61,poire,Poire,com,0,0,5,0,3,0,0,0,1,humanoide,obj,90,9,0,fruit,1,0
+62,orange,Orange,com,0,0,5,0,3,0,0,0,1,humanoide,obj,90,13,1,fruit,1,0
+63,couronne_fq,Couronne (probablement en carton),rar,0,0,0,0,10,0,1,0,1,rat,obj,60,94,404,inut,1,0
+64,patte_lapin,Patte de lapin,rar,0,0,0,5,70,1,1,15,1,lapin,0,50,7,1,util,1,0
+65,potion_pv_mq,Potion de vie de qualité moyenne,rar,0,0,35,0,35,1,5,40,1,humanoide,obj,60,999,2,util,1,1
+66,grande_aile,Grande aile,rar,0,0,0,0,10,0,3,0,1,volant,0,55,3,404,inut,1,0
+67,fourmis_geante_patte,Patte de fourmis geante,rar,2,0,0,0,12,0,1,0,1,fourmis,0,50,5,404,inut,1,0
+68,ecaille_luminescente,Écaille luminescente,rar,0,0,0,0,40,0,9,0,1,obj,0,80,69,404,inut,1,0
+69,tomate,Tomate,com,0,0,5,0,5,0,1,0,1,humanoide,nature,35,444,1,legume,1,0
+70,patate,Pomme de Terre,com,0,0,3,0,5,0,1,0,1,humanoide,nature,35,444,0,legume,1,0
+71,mais,Maïs,rar,0,0,6,0,6,0,1,0,1,humanoide,nature,35,444,1,legume,1,0
+72,houe,Houe de pauvre fermier,com,4,0,0,0,0,0,1,0,0,0,0,0,444,404,arme,0,0
+73,carotte,Carotte,com,0,0,4,0,3,0,1,0,1,nature,lapin,30,13,0,legume,1,0
+74,pasteque,Pastèque,rar,0,0,8,0,8,1,1,20,1,humanoide,nature,20,444,3,fruit,1,0
+75,longue_epee,Longue épée,rar,7,0,0,0,150,1,3,25,1,humanoide,humano_monstre,15,444,1,arme,1,0
+76,pioche_fer,Pioche en Fer,rar,4,0,0,0,80,1,0,40,1,humanoide,humano_monstre,42,68,404,arme,1,0
+77,morceau_fer_brut,Minerai de fer,com,0,0,0,0,20,1,9,60,1,roche,humanoide,50,68,4,inut,1,0
+78,morceau_or_brut,Minerai d'or,rar,0,0,0,0,50,1,9,40,1,roche,humanoide,30,68,4,inut,1,0
+79,morceau_dia_brut,Minerai de diamant,epi,0,0,0,0,85,1,9,10,1,roche,humanoide,5,68,4,inut,1,0
+80,morceau_emrl_brut,Minerai d'émeraude,leg,0,0,0,0,200,1,9,5,1,roche,humanoide,2,68,4,inut,1,0
+81,morceau_mithril_brut,Minerai de mithril,epi,0,0,0,0,180,1,9,7,1,roche,humanoide,4,68,4,inut,1,0
+82,morceau_titane_brut,Minerai de titane,leg,0,0,0,0,220,1,9,4,1,roche,humanoide,3,68,4,inut,1,0
+83,morceau_rubi_brut,Minerai de rubis,epi,0,0,0,0,190,1,9,6,1,roche,humanoide,8,68,4,inut,1,0
+84,artefact_tp,Artefact “repos”,rar,0,0,0,0,50,1,0,50,0,obj,leg,0,444,0,inut,0,0
+85,bouteille,Bouteille,com,1,0,0,0,2,0,5,0,1,humanoide,humano_monstre,20,26,0,arme,1,0
+86,patte_araignee,Patte d'araignée,com,2,0,0,0,7,1,0,60,1,arachno,arachno,80,51,404,arme,1,0
+87,toile_doree,Toile d'araignée dorée,rar,0,0,0,0,24,1,0,30,1,arachno,0,25,46,404,inut,1,0
+88,aile_doree,Aile dorée,rar,0,0,0,0,24,1,0,30,1,volant,0,25,3,404,inut,1,0
+89,encre_noir,Encre noir,com,0,0,0,3,5,0,5,0,1,0,0,80,33,404,inut,1,0
+90,trident,Trident,epi,16,0,0,0,400,1,6,5,0,0,0,0,444,3,arme,1,0
+91,eau_benite,Eau bénite,rar,0,0,50,10,150,1,7,7,1,humanoide,0,8,444,2,inut,1,0
+92,cactus,Cactus,com,0,0,5,0,5,0,7,0,1,epine,0,33,39,3,inut,1,0
+93,kimono,Kimono,epi,0,20,0,7,300,1,5,10,1,obj,0,40,118,404,armure,1,0
+94,cuisse_grenouille,Cuisse de “grenouille”,com,0,0,10,0,8,0,1,60,1,grenouille,obj,40,63,2,inut,1,0
+95,epine,Épine,com,3,2,0,0,3,0,1,0,1,epine,0,45,56,404,arme,1,0
+96,venin_scorpion,Venin de scorpion,com,0,0,4,1,10,0,1,0,1,scorpion,0,50,38,404,inut,1,0
+97,essence_mer,Essence de la mer,rar,0,0,8,0,12,1,5,50,1,poisson,0,50,114,2,inut,1,0
+98,neige,Neige,com,0,0,1,0,1,0,1,0,1,neige,0,50,110,404,inut,1,0
+99,sanglier,Sanglier,com,0,0,5,0,5,0,1,0,1,sanglier,obj,60,121,1,inut,1,0
+100,griffe_ours,Griffe d'ours,rar,5,0,0,0,100,0,1,0,1,ours,obj,20,83,0,inut,1,0
+101,nageoire,Nageoire,com,2,0,3,0,25,0,5,0,1,poisson,0,35,62,404,arme,1,0
+102,triforce,Triforce,epi,0,0,100,0,150,0,0,0,0,0,0,0,0,1,inut,1,0
+103,cadeau_fermier,Tomate dorée,rar,0,0,0,0,0,0,0,0,0,0,0,0,444,404,inut,0,0
+104,myrtille,Grappe de myrtilles,com,0,0,8,0,10,1,4,60,1,humanoide,obj,25,444,2,baie,1,0
+105,framboise,Framboises,com,0,0,7,0,8,1,4,60,1,humanoide,obj,25,444,2,baie,1,0
+106,escargot,Escargot,com,0,0,3,0,7,0,5,50,1,0,0,100,125,404,inut,1,0
+107,oeuflezard,Oeuf de lézard,rar,0,0,12,0,25,0,5,30,1,lezard,0,35,127,404,inut,1,0
+108,ecaille_dure,Écailles de lézard,com,0,5,0,0,15,1,5,35,1,lezard,0,55,128,2,armure,1,0
+109,cheveuxdoree,Cheveu doré,rar,0,0,0,0,45,1,5,28,1,sirene,0,30,130,404,inut,1,0
+110,pierreteleportation,Pierre de téléportation “degle”,epi,0,0,0,0,0,0,0,0,0,0,0,0,444,2,inut,1,0
+111,poulet,Poulet,com,0,0,10,0,7,1,0,30,1,poulet,0,0,444,404,inut,1,0
+112,vodka,Vodka,rar,0,0,5,5,40,0,0,0,0,humanoide,0,75,134,3,inut,1,0
+113,epee_trachante,Épée double-tranchant,rar,13,0,0,0,150,0,0,0,1,humanoide,0,10,133,3,arme,1,0
+114,epee_triple_tranchant,Épée triple-tranchant,epi,16,0,0,0,350,0,0,0,1,humanoide,0,7,111,4,arme,1,0
+115,gemme,Gemme sale,com,0,0,0,0,40,1,0,40,1,roche,humano_monstre,40,136,4,inut,1,0
+116,gemme_2,Gemme de bonne qualitée,rar,0,0,0,0,70,1,4,25,1,roche,humano_monstre,25,136,4,inut,1,0
+117,gemme_3,Gemme brillante,epi,0,0,0,0,135,1,7,10,1,roche,humano_monstre,10,136,4,inut,1,0
+118,Gemme_4,Gemme surbrillante,leg,0,0,0,0,325,1,9,3,1,roche,humano_monstre,3,136,4,inut,1,0
+119,medaille_bronze,Médaille de bronze,com,0,0,0,0,30,0,8,0,1,0,0,100,132,404,inut,1,0
+120,medaille_argent,Médaille d'argent,rar,0,0,0,0,60,0,8,0,1,0,0,100,133,404,inut,1,0
+121,medaille_or,Médaille d'or,epi,0,0,0,0,90,0,8,0,1,0,0,100,134,404,inut,1,0
+122,att_plus,Potion de force,epi,2,0,0,0,100,1,4,8,1,humanoide,humano_monstre,10,85,4,util,1,1
+123,def_plus,Potion de renforcement,epi,0,5,0,0,150,1,4,8,1,humanoide,humano_monstre,10,85,4,util,1,1
+124,saumon_preparer,Saumon,com,0,0,15,0,25,0,0,0,1,0,0,100,142,2,util,1,0
+125,groseille,Grappe de groseilles,com,0,0,3,0,7,0,4,50,1,humanoide,0,25,444,2,baie,1,0
+126,baie_du_miracle,Grappe de baies du miracle,rar,0,0,25,2,35,0,4,30,1,humanoide,obj,15,444,404,baie,1,0
+127,physalis,Grappe de fruits du physalis,rar,0,0,15,0,15,1,4,40,1,obj,0,20,444,2,baie,1,0
+128,baie_demai,Grappe de baies de Mai,rar,0,0,20,6,40,0,4,25,1,humanoide,obj,15,444,404,baie,1,0
+129,baie_sureau,Grappe de baies de sureau ,com,0,0,5,0,3,1,4,50,1,humanoide,obj,23,444,2,baie,1,0
+130,cassis,Grappe de cassis,rar,0,0,15,0,20,1,4,42,1,humanoide,obj,38,444,2,baie,1,0
+131,figue,Figue,rar,0,0,20,0,15,1,4,20,0,0,0,0,444,2,fruit,1,0
+132,framboise_jaune,Framboises jaune,rar,0,0,10,0,10,1,4,50,0,0,0,0,444,404,baie,1,0
+133,grappe_cerise,Grappe de cerises,com,0,0,5,0,7,0,4,0,0,0,0,0,444,2,fruit,1,0
+134,peche,Pêche,rar,0,0,15,0,10,0,4,0,0,0,0,0,444,2,fruit,1,0

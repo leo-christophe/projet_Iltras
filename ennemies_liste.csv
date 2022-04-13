@@ -1,0 +1,144 @@
+indice;nom;sim;att;vie;rar;eff;cha;zon1;zon2;zon3;typ;typ_an;typ_an_2;fuit;cac;rec;arr;sort
+0;Slime;slime;1;5;50;0;0;112;111;8;commun;slime;X;possible;possible;0;Le slime fait son entrée!;Vous avez implosé le slime.
+1;Loup;loup;2;10;10;saignement;5;111;4;0;commun;fourrure;X;impossible;impossible;0;Vous entendez un grognement, un loup sauvage apparaît!;Le loup a été remis à sa place.
+2;Gobelin;gobelin;2;12;10;0;0;111;4;0;commun;humano_monstre;gobelin;possible;impossible;5;Une forme verte au loin court vers vous! En garde contre le gobelin;Le gobelin a mordu la poussière!
+3;Aigle;aigle;5;12;10;saignement;10;13;111;5;air;volant;X;possible;possible;0;Un aigle vous attaque!;L'aigle est maintenant 7 pieds sous terre.
+4;Serpent;serpent;3;5;10;poison;60;111;112;8;terre;serpent;poison;possible;impossible;0;Un serpent est au sol…;Le serpent sert maintenant d'écharpe.
+5;Fourmis géante;fourmis_geant;2;11;20;0;0;111;4;8;terre;fourmis;X;possible;impossible;0;Une fourmis démesurée se rapproche.;Cette fourmis ne travaillera plus.
+6;Big Foot;big_foot;15;15;2;ecrasement;25;113;9;0;neige;fourrure;leg;impossible;impossible;5;C'est de la neige? C'est un lapin? Non! C'est Big Foot!;BigFoot n'est maintenant plus qu'une légende oubliée.
+7;Lapin des neiges;lapin_neige;1;5;25;0;0;113;0;0;neige;fourrure;lapin;possible;possible;0;Que c'est mignon, un lapin! Il montre ses dents…;Ce lapin des neiges a finit à la casserole.
+8;Taupe des pierres;taupe_pier;3;10;20;0;0;113;7;9;terre;roche;X;possible;possible;0;Vous entendez un bruit sous vos pieds, une taupe sort de la pierre…;Vous avez remis la taupe à sa place, sous la terre.
+9;Bandit épéiste;bandit_ep;8;8;10;saignement;25;111;4;7;bandit;humanoide;X;possible;possible;10;Un homme vous menace d'une épée, un bandit!;Le bandit épéiste n'est plus que poussière.
+10;Bandit éclaireur;bandit_ec;1;7;15;0;0;111;4;7;bandit;humanoide;X;possible;possible;10;Un homme vous observe…;Le bandit éclaireur a finit en chair à paté. 
+11;Bandit en doudoune;bandit_do;4;10;17;0;0;113;0;0;neige;humanoide;neige;possible;possible;15;Un mouton? Non! Un bandit en doudoune approche ! ;Le bandit en doudoune, n'est plus qu'une doudoune. 
+12;Bandit avec un bouclier;bandit_bo;3;30;10;fatigue;10;111;4;7;bandit;humanoide;X;possible;possible;12;Un homme vous menace avec un bouclier.;Le bouclier n'a pas pu protéger ce bandit...
+13;Chef bandit;bandit_ch;10;25;5;0;0;111;4;7;bandit;humanoide;X;possible;impossible;25;Le chef des bandits apparaît, et il est énervé!;Le chef des bandits n'est plus de ce monde.
+14;Chevalier corrompu;chavalier_c;10;15;5;saignement;30;111;4;7;commun;humanoide;X;possible;impossible;25;Un chevalier sort des buissons, il veut vous tuer!;La justice a été rendue, le chevalier corrompu n'est plus. 
+15;Grand cerf des neiges;cerf_neige;10;25;4;0;0;13;0;0;neige;fourrure;neige;possible;possible;0;Un grand cerf approche, il vous veut du mal.;Le Grand cerf des neiges a été abattu. 
+16;Chauve souris;chauve_s;3;2;15;vie_drainage;45;111;4;9;air;volant;X;possible;possible;0;Vous entendez des grincements au dessus de votre tête…;La chauve souris est dans la soupe.
+17;Sanglier volant;sanglier_v;12;12;17;saignement;12;4;0;0;air;volant;sanglier;impossible;possible;0;Un sanglier.. volant ? vous attaque !;Le  volant.. n'est plus volant!
+18;Grenouille géante;grenouille_g;7;20;5;ecrasement;36;112;7;0;commun;grenouille;X;impossible;possible;0;Des vibrations ?! Une grenouille démesurée apparaît !;La Grenouille géante ne bouge plus.
+19;Orc;orc;10;22;8;ecrasement;7;111;7;8;commun;humano_monstre;X;impossible;impossible;7;Vous entendez quelque chose courir derrière vous, UN ORC!;L'Orc n'est plus de ce monde.
+20;Arbre vivant;arbre_vivant;2;40;15;ecrasement;75;111;4;8;plante;nature;epine;possible;possible;0;Les feuilles tombent, les animaux s'enfuient.. Un arbre vivant vous tombe dessus!;Vous avez assez de papier pour écrire un livre.
+21;Faux dandelion;f_dandelion;1;1;8;0;0;112;4;8;plante;nature;X;possible;possible;0;Un dandelion vous menace.;"Vous remportez le titre ""Menace pour la nature"""
+22;Fausse orchidée;f_orchidee;1;1;8;0;0;112;4;8;plante;nature;X;possible;possible;0;Une orchidée vous menace.;"Vous remportez le titre ""Du Goudron, partout!"""
+23;Faux coffre;f_coffre;3;10;26;magie;10;999;999;999;commun;obj;X;possible;possible;10;Vous découvrez un coffre, vous l'ouvrez mais il vous mord ! Un faux coffre! ;Vous avez ouvert le faux coffre avec la force qui vous reste.
+24;Géant serpent;serpent_g;10;20;5;ecrasement;50;111;4;7;terre;serpent;X;impossible;possible;0;Le sol tremble... un géant serpent vous poursuit.;Le géant serpent a finit en écharpe pour géants.
+25;Requin;requin;10;15;30;saignement;20;6;0;0;eau;poisson;X;possible;possible;0;Une éleron sort de l'eau, un requin!;Le Requin ne bouge plus.
+26;Poisson Globe;poisson_g;3;6;15;poison;33;6;0;0;eau;epine;X;possible;possible;0;Vous vous sentez un peu mal, un poisson-globe vous a piqué!;Le Poisson Globe n'est maintenant plus qu'un filet de saumon.
+27;Baleine marteaux;baleine_mar;8;32;10;ecrasement;80;6;0;0;eau;poisson;X;possible;possible;0;Une baleine à tête de marteaux vous menace...;La Baleine Marteaux est cassée.
+28;Requin tournevis;requin_tour;12;17;20;saignement;50;6;0;0;eau;poisson;requin;possible;possible;0;Un requin à tête de tournevis fonce droit vers vous!;Le Requin tournevis a été trop utilisé.
+29;Serpent à tambourins;serpent_tamb;8;8;25;saignement;3;6;0;0;terre;serpent;X;possible;possible;0;Un serpent produisant des sons de tambourin apparaît.;Le serpent à tambourins ne fait plus aucun son.
+30;Baleine dorée;baleine_dor;10;50;3;ecrasement;75;6;0;0;eau;poisson;leg;impossible;impossible;30;Vous sentez des vibrations sous votre bateau, une baleine dorée se trouve au loin. ;La Baleine dorée est maintenant livide.
+31;Kraken;kraken;15;60;1;ecrasement;90;6;0;0;eau;kraken;leg;impossible;impossible;40;UN KRAKEN!!! Très dangereux, très violent, il approche à grande allure!;Le Kraken n'est plus.
+32;Bébé-Kraken;b_kraken;6;30;5;0;0;6;0;0;eau;kraken;X;possible;possible;3;Un bébé? Kraken approche, il est si mignon...;Vous avez tué un bébé-kraken. Bravo.
+33;Poulpe;poulpe;2;1;20;0;0;6;0;0;eau;poulpe;X;possible;possible;0;Quel beau poulpe!;Vous avez maintenant assez d'encre pour écrire un livre !
+34;Momie;momie;4;10;40;0;0;7;0;0;commun;humano_monstre;X;possible;possible;10;Une momie marche vers vous, lentement, très lentement...;La momie manque au tombeau.
+35;Lapin carnivore;lapin_c;5;5;30;saignement;12;111;113;4;commun;lapin;fourrure;possible;impossible;0;Un lapin vous a mordu le pied, AÏE! ;Le Lapin carnivore ne mangera plus aucune viande.
+36;Scorpion de poison;scorpion;3;3;30;poison;65;7;8;9;commun;poison;scorpion;possible;possible;0;Vous entendez quelque chose au sol, un scorpion! ;Le Scorpion de poison n'empoisonnera plus personne.
+37;Vautour;vautour;4;3;25;saignement;38;7;9;0;air;volant;X;impossible;possible;5;Un Vautour rode vers vous... Il vous attaque! (et certainement confondu avec des os);Le Vautour a péri sous vos griffes.
+38;Scorpion géant;scorpion_g;7;17;10;ecrasement;34;7;9;4;commun;scorpion;X;impossible;possible;10;Un scorpion gigantesque est au loin, il vient vers vous.;Le Scorpion géant a finit en parfum.
+39;Cactus;cactus;2;2;50;fatigue;80;7;0;0;plante;nature;epine;possible;possible;0;Un cactus vous a piqué!;"Vous avez remporté le succès : ""Ennemi de la nature"""
+40;Sauvage;sauvage;3;7;32;0;0;8;7;4;commun;humanoide;X;possible;possible;3;Vous entendez des bruits de bouche et des flèches vous froler, un sauvage!;Ce Sauvage a mordu la poussière.
+41;Lion à deux têtes;lion_deux_tet;8;4;8;saignement;30;8;0;0;commun;fourrure;X;impossible;impossible;0;Un lion à deux têtes vous observe, puis se rapproche.;Le Lion à deux têtes
+42;Panthère;panthere;6;5;8;saignement;20;8;0;0;commun;fourrure;X;impossible;impossible;0;Une panthère apparaît !;
+43;Lionceau aguerri;lionceau_aguerri;3;3;13;fatigue;2;8;0;0;commun;fourrure;X;possible;possible;0;Un tout petit lionceau se rapproche. ;
+44;Araignée à tête de mort;araignee_mort;7;10;23;poison;15;8;9;11;commun;arachno;X;possible;possible;0;Une araignée à tête de mort monte sur vos épaules, ew!;
+45;Araignée rouge;araignee_rouge;6;10;25;brulure;10;8;11;0;feu;arachno;X;possible;possible;0;Une araignée rouge tisse une toile devant vous... Et voilà qu'elle vous attaque!;
+46;Araignée géante;araignee_ge;5;15;15;ecrasement;20;8;11;0;commun;arachno;X;possible;impossible;0;Une araignée démesurée vous fonce dessus.;
+47;Camaléon rouge à dard;camaleon_d;4;7;10;poison;15;8;11;0;feu;X;X;impossible;possible;0;Un camaléon rouge avec un grand dard vous regarde. ;
+48;Panda méchant;panda_m;3;8;19;ecrasement;10;8;0;0;commun;fourrure;X;possible;possible;0;Un panda vous poursuit.;
+49;Frelon à tête de mort;frelon_mort;5;6;20;fatigue;5;8;4;0;air;insecte;X;possible;impossible;0;Un frelon à tête de mort vole vers vous, et essaye de vous piquer. ;
+50;Papillon de poison;papillon_poison;2;1;26;poison;50;111;8;0;air;insecte;poison;possible;impossible;0;Un beau papillon avec une tête de mort sur ses ailes se rapproche.;
+51;Araignée verte;araignee_verte;3;9;12;0;0;8;0;0;plante;arachno;X;possible;possible;0;Une araignée verte ayant une texture de feuille d'arbre monte sur votre pied.;
+52;Pierre blanche;pierre_b;4;20;30;fatigue;25;9;113;4;terre;nature;roche;possible;possible;5;Vous avez trebuché sur une pierre blanche, ça fait mal! Et elle vous regarde mal. ;
+53;Golem;golem;3;26;20;ecrasement;30;9;7;11;terre;roche;X;possible;possible;15;Vous avez réveillé un golem, et il est très en colère.;
+54;Bonhomme de neige;bonhomme_neige;1;2;10;fatigue;7;113;0;0;neige;nature;neige;possible;possible;2;Un bonhomme de neige veut faire une bataille de boules de neiges... ;
+55;Golem de neige;golem_neige;5;18;5;fatigue;30;113;0;0;neige ;roche;neige;impossible;impossible;10;Un bonhomme de neige, d'une taille astronomique se rapproche, et il n'a pas l'air de jouer!;
+56;Porc-épique géant;porc_ep_g;2;2;20;fatigue;18;4;8;9;commun;epine;X;possible;possible;0;Un porc-épique de grosse taille se faufile entre vos jambes et vous pique, OUCH! ;
+57;Moustique;moustique;1;1;25;vie_drainage;70;111;8;6;air;insecte;volant;impossible;possible;0;Un moustique.;
+58;Sauvage guerrier;sauvage_g;3;2;10;0;0;8;0;0;commun;humanoide;X;possible;possible;20;Un sauvage avec une lance court dans votre direction!;
+59;Chef sauvage;sauvage_c;6;8;5;0;0;8;9;0;commun;humanoide;X;impossible;impossible;30;Un sauvage avec une genre de couronne et une lance dorée s'approche.;
+60;Champignon géant;champi_g;1;2;40;vie_drainage;24;4;8;9;plante;nature;X;possible;possible;1;Un champignon géant! ;
+61;Plante carnivore;plante_carnivore;3;1;25;0;0;8;0;0;plante;nature;X;possible;possible;0;Une plante carnivore essaye de vous croquer !;
+62;Piranha;piranha;3;2;25;saignement;40;8;7;0;eau;poisson;X;possible;impossible;0;Un piranha essaye de vous croquer!;
+63;Crapaud rouge;crapaud_r;4;5;25;0;0;8;5;6;commun;grenouille;X;possible;possible;0;Un crapaud rouge est au sol.;
+64;Slime de magma;magma_slime;10;12;35;brulure;30;11;0;0;feu;slime;demoniaque;possible;possible;0;Un slime de magma s'approche à grande vitesse.;
+65;Démon;demon;18;60;10;brulure;50;11;0;0;feu;demoniaque;X;impossible;impossible;50;Un démon apparaît!;
+66;Chauve souris de pierre;chauve_s_pierre;12;30;20;fatigue;35;9;11;0;terre;volant;roche;impossible;impossible;5;Une chauve souris en pierre vole au dessus de votre tête et tire des projectiles de pierre vers le sol;
+67;Faux coffre légendaire;f_coffre_leg;13;30;10;0;0;999;999;999;commun;obj;X;possible;possible;50;Un faux coffre en or, diamant et émeraude! Vous l'ouvrez et il explose! ;
+68;Petit nain corrompu;petit_nain_c;8;23;20;fatigue;15;9;13;0;terre;humanoide;roche;impossible;impossible;20;Un petit nain essaye de vous frapper avec sa pioche, ça fait mal! ;
+69;Piranha luminescent;piranha_l;16;29;20;saignement;40;9;0;0;eau;poisson;X;possible;possible;0;Vous apercevez un piranha dans l'eau à vos pieds malgré la sombre atmosphère des grottes.;
+70;Dragon;dragon;17;40;10;brulure;50;9;11;0;air;volant;lezard;impossible;impossible;50;Un dragon vole vers vous, il ne fait pas 10 mètres mais semble très dangereux!;
+71;Bébé Dragon;bebe_dragon;10;30;5;0;0;9;11;10;air;volant;lezard;possible;possible;5;Preux-chevalier, voici un bébé dragon! ;
+72;Bandit mineur;mineur_b;10;20;30;0;0;13;9;0;bandit;humanoide;roche;impossible;impossible;25;Un bandit qui minait dans le coin de la grotte vous menace.;
+73;Aventurier brigant;aventurier_b;15;43;20;0;0;7;8;0;bandit;humanoide;roche;impossible;impossible;25;Un aventurier menace de vous attaquer si vous ne lui donner pas d'argent!;
+74;Golem de pierre;golem_pierre;12;35;10;ecrasement;25;7;9;0;terre;roche;X;impossible;impossible;10;Des pierres se rassemblent pour former un golem de pierre, ça fait peur!;
+75;Bleuet;bleuet;1;1;5;0;0;111;0;0;plante;nature;X;possible;possible;0;Une petite fleur bleue vous a piqué!;
+76;Chat à 10 cornes;chat_cornes;10;45;1;saignement;45;111;8;0;commun;leg;fourrure;impossible;impossible;50;Un grand chat à dix cornes vous attaque... Pour une raison?;
+77;Clochat;clochat;2;6;10;0;0;111;8;0;commun;fourrure;X;possible;possible;1;Un chat à clochettes ronronne à vos côtés. ;
+78;Homme squelettique;homme_skel;3;16;15;fatigue;40;7;9;11;commun;humanoide;X;possible;possible;5;Le squelette d'un homme vous attaque. Il me casse les omoplates! Bone attaque.;F
+79;Loup à 2 cornes;loup_corn;13;26;8;saignement;40;8;9;0;commun;fourrure;X;impossible;possible;10;Un loup à deux cornes fait trembler vos deux pieds.;
+80;Grand loup blanc;grand_loup_b;19;20;12;saignement;45;4;9;0;commun;fourrure;X;impossible;impossible;10;Un grand loup blanc, réputé pour sa férocité vous veut du mal.;
+81;Grand ours des neiges;grand_ours_n;15;26;10;saignement;45;13;0;0;neige;fourrure;ours;impossible;impossible;10;Un grand ours avec son épait manteaux court vers vous, ou un ours polaire?;
+82;Grand ours;grand_ours;17;23;10;saignement;43;111;9;0;commun;fourrure;ours;impossible;possible;5;Un grand ours vous attaque.;
+83;Ours;ours;13;15;5;saignement;40;111;9;0;commun;fourrure;ours;possible;possible;2;Un ours qui cherchait du miel vous tombe dessus.;
+84;Coyote ;coyote;8;10;12;0;0;7;8;0;commun;fourrure;X;possible;possible;0;Un coyote qui riait dans le coin s'attaque à du gros gibier, vous!;
+85;Sorcière;sorciere;12;20;9;magie;80;999;999;999;commun;magie;X;impossible;possible;10;Une sorcière qui faisait des expériences avec ses sorts vous attaque.;
+86;Sorcier;sorcier ;12;20;9;magie;80;999;999;999;commun;magie;X;impossible;possible;10;Un sorcier apparaît, il a l'air de vous vouloir du mal.;
+87;Slime des profondeurs;slime_prof;5;15;25;fatigue;25;9;10;11;terre;slime;roche;impossible;possible;5;Un slime apparaît, il est très sombre et bouge très lentement.;
+88;Statue;statue;3;20;20;ecrasement;40;13;9;7;terre;roche;humano_monstre;impossible;possible;5;Une statue est devant vous.;
+89;Gorille géant;gorille_g;10;60;5;ecrasement;50;8;9;0;commun;fourrure;X;impossible;impossible;25;Heureusement qu'il n'a pas de grand immeuble, bref, un gorille géant fonce droit sur vous!;
+90;Lapin;lapin;1;7;14;0;0;111;112;7;commun;fourrure;lapin;possible;possible;0;Quoi de neuf, docteur? Un petit lapin, que c'est mignon!;
+91;Vampire;vampire;10;30;15;vie_drainage;75;9;11;0;commun;magie;X;impossible;impossible;20;Une chauve souris se transforme en.. vampire? Des gouttes de sang tombent de ses dents.;
+92;Serpent de lave;serpent_l;10;25;15;brulure;30;11;10;0;feu;serpent;demoniaque;possible;possible;0;Un serpent de lave se mèle à vos pieds et vous brûle. ;
+93;Rat;rat;1;2;20;0;0;111;112;9;commun;rat;X;possible;possible;0;Un rat apparaît, AAAAHHH! ;
+94;Le roi des rats;roi_rat;10;20;10;0;0;111;12;9;commun;rat;X;impossible;impossible;7;Un rat avec une couronne vous ordonne de le laisser vous manger?;
+95;La reine des rats;reine_rat;8;18;15;0;0;111;112;9;commun;rat;X;impossible;possible;7;Un rat avec un diademe court dans tout les sens.;
+96;Pangolin de feu;pangolin_f;5;12;20;brulure;24;11;9;0;feu;X;X;impossible;possible;0;Un pangolin de feu brule de plaisir de vous combattre.;
+97;Pangolin argenté;pangolin_arg;6;14;5;0;0;4;7;0;commun;X;X;impossible;possible;30;Un pangolin d'argent se balade à côté de vous.;
+98;Castor enragé;castor_enr;7;70;15;brulure;20;4;0;0;commun;X;X;possible;possible;30;Un castor enragé vous regarde comme s'il voulait vous attaquer.;
+99;Esprit de feu;esprit_f;15;70;1;brulure;95;11;12;10;feu;leg;X;possible;possible;60;Un esprit de feu apparaît, vous pouvez l'attaquer mais les chances de s'en sortir sont minces.;
+100;Esprit de l'eau;esprit_e;15;70;1;0;0;6;5;0;eau;leg;X;possible;possible;60;Un esprit de l'eau apparaît, vous pouvez l'attaquer mais les chances de s'en sortir sont minces.;
+101;Esprit de la forêt;esprit_fo;15;70;1;0;0;4;111;8;air;leg;X;possible;possible;60;Un esprit de la forêt apparaît, vous pouvez l'attaquer mais les chances de s'en sortir sont minces.;
+102;Esprit de la terre;esprit_ter;15;70;1;ecrasement;95;9;13;7;terre;leg;X;possible;possible;60;Un esprit de terre apparaît, vous pouvez l'attaquer mais les chances de s'en sortir sont minces.;
+103;Cerbère;cerbere;30;125;100;brulure;99;100;0;0;feu;leg;X;impossible;impossible;0;La créature menaçant le monde de sa destruction, le cerbère apparaît devant vous.;
+104;Grand lapin carnivore;lapin_car_g;15;10;20;saignement;65;111;9;0;commun;lapin;fourrure;impossible;possible;5;Un lapin mangeant sa proie, une petite souris vous a aperçu et court vers vous!;
+105;Scorpion de feu;scorpion_f;7;3;14;brulure;35;11;10;0;feu;scorpion;demoniaque;possible;possible;0;Un scorpion à flammes est à vos pieds.;
+106;Titan;titan;25;85;5;ecrasement;95;7;4;11;commun;leg;demoniaque;impossible;possible;50;Vous entendez des tremblements, les oiseaux s'envolent, un titan s'approche...;
+107;Ours des cavernes;caverne_ours;30;90;0;ecrasement;70;0;0;0;commun;fourrure;ours;impossible;impossible;100;En moins d'une seconde la gigantesque créature se retrouve sur vous.;
+108;Elf corrompu;elf_corrompu;12;20;15;0;0;4;8;0;magie;humanoide;X;possible;impossible;10;Un être aux longues oreilles s'approche avec une envie de tuer...;Vous avez écrasé l'elf, bien joué!
+109;Taureau;taureau;10;10;25;ecrasement;20;112;0;0;commun;fourrure;X;possible;impossible;0;Un taureau vous voit au loin. Il vous court après.;Vous avez à manger ce soir!
+110;Reine des glaces;reine_g;15;30;5;brulure;50;113;0;0;neige;humano_monstre;humanoide;possible;impossible;100;Vous entendez un chant au loin... La reine des glaces vous en veut! ;Vous l'avez glacé le sang
+111;Aventurier brigant de haut niveau;aventurier_b_HN;35;69;10;saignement;80;7;8;9;magie;humanoide;leg;impossible;possible;200;Ce qui ressemble à un aventurier de très haut niveau se rapproche de vous. Et il ne vous veut pas du bien.;Vous l'avez remis à sa place! Bien joué!
+112;Noble combattant;noble_comba;10;30;7;saignement;30;0;0;0;commun;humanoide;X;possible;impossible;75;En garde contre le noble! (il est balèze!);EAT THE RICH!
+113;Homme Cochon;homme_cochon;6;20;35;saignement;80;9;10;11;feu;humano_monstre;fourrure;possible;impossible;20;Un Homme..Cochon? Vient à votre rencontre. Il vous grogne dessus et vous pointe avec une épée...;On mange du porc ce soir!!! :) 
+114;Sirène;sirene;7;10;30;magie;90;6;0;0;eau;sirene;poisson;possible;impossible;5;Au loin, vous entendez un chant. Il se rapproche très vite et vous voilà face à une sirène, en garde!;On mange du sushi ce soir!!
+115;Sirène combattante;sirene_combat;13;10;25;magie;80;6;0;0;eau;sirene;poisson;possible;impossible;15;Au loin, vous entendez un chant. Il se rapproche très vite et vous voilà face à une sirène, en garde!;
+116;Garde démoniaque;garde_demon;20;60;35;brulure;70;10;11;12;feu;demoniaque;X;possible;impossible;60;Un démon avec de grandes cornes et une belle armure vous attaque!;
+117;Gobelin de la zone volcanique;gobelin_volc;10;20;60;brulure;20;9;10;11;feu;gobelin;demoniaque;possible;impossible;10;Un gobelin avec une grosse corne sur la tête se prépare à vous tuer...;
+118;Samuraï corrompu;samurai;12;12;20;saignement;15;4;7;11;commun;humanoide;X;impossible;impossible;30;Un samuraï se tient devant vous, d'un air vraiment agressif!;Vous l'avez tranché!
+119;Poisson volant;poisson_vol;6;3;34;0;0;5;6;0;eau;poisson;X;possible;possible;3;Un poisson.. qui vole dans les airs vous donne des coups de nageoir! ;
+120;Pirate;pirate;7;7;30;saignement;30;5;6;0;eau;humanoide;X;possible;impossible;30;Un pirate essaye de vous piller...;
+121;Grand sanglier;grand_sanglier;10;5;10;saignement;100;111;4;0;commun;fourrure;sanglier;possible;possible;5;Un grand sanglier vous fonce dessus!;
+122;Citoyen de la capitale;citoyen_capitale;6;10;0;0;0;0;0;0;commun;humanoide;X;impossible;impossible;10;Tout le monde vous regarde, vous voilà contre... un citoyen de la capitale! ;
+123;Bandit du port;bandit_port;12;9;20;saignement;35;5;6;0;commun;humanoide;X;possible;impossible;25;Un bandit, probablement originaire du port vous attaque. (Il sent fort le poisson, alors qu'il ne va pas en mer);
+124;Mouette-dragon;mouette_dragon;15;4;40;fatigue;50;5;6;0;air;volant;X;possible;impossible ;10;Une mouette,dragon? Vous attaque de toutes ses plumes. ;
+125;Escargot;escargot;0;1;40;0;0;5;8;9;commun;X;X;possible;possible;0;Un escargot.;
+126;Raie Mandat;raitmandat;7;11;40;magie;20;6;0;0;eau;X;X;possible;possible;10;Une raie mandat fait surface, pour vous attaquer! Attaquez la avant qu'elle soit élue!;
+127;Lézard;lezard;1;10;35;fatigue;40;5;7;0;commun;lezard;X;possible;impossible;1;Un lézard sort de derrière une pierre!;
+128;Homme-Lézard;hommelezard;10;15;20;saignement;40;5;7;8;commun;lezard;X;possible;impossible;20;Un Homme-Lézard est apparu de nulle part... ;
+129;Gardien de la forêt;gardiendelaforet;7;12;27;magie;45;111;4;8;commun;humano_monstre;X;impossible;impossible ;12;“Que faites-vous ici, étranger? C'est une zone interdite!”;
+130;Ondine;ondine;4;22;15;magie;70;5;6;8;eau;humano_monstre;poisson;impossible;impossible;25;Une ondine, nymphe des eaux, surgit devant vous. Vous vous bouchez les oreilles.;
+131;Momie en armure;momie_armure;10;35;10;0;0;7;0;0;commun;humano_monstre;X;impossible;impossible ;60;Une momie en armure vous défie! ;
+132;Combattant Julius;combattantjul;17;15;0;ecrasement;70;0;0;0;commun;humanoide;X;impossible;impossible ;20;Vous voilà contre le combattant débutant Julius! ;
+133;Grand combattant Pietro;pietro;20;25;0;saignement;100;0;0;0;commun;humanoide;X;impossible;impossible ;40;Vous voilà contre le grand combattant Pietro! Gagnant à multiple reprise.;
+134;Champion Bôris;boris;30;35;0;ecrasement;95;0;0;0;commun;humanoide;X;impossible;impossible ;60;Vous voilà contre le champion boris. Bonne chance. ;
+135;Vieux Sâge;sage;15;40;0;fatigue;75;0;0;0;commun;humanoide;X;impossible;impossible ;30;En garde contre le vieux sage!;
+136;Mineur fantome;mineur_fanto;5;20;35;magie;75;9;0;0;commun;humano_monstre;roche;possible;impossible;15;OooOoOoOOoooOOOoo...?;
+137;Araignée des profondeurs;araignee_profon;18;12;40;0;0;9;0;0;commun;arachno;roche;impossible;impossible ;27;AAAAAAH ! Une très grosse araignée s'approche de vous. Soit vous la tuer, soit vous allez arachno-mourir.;
+138;Serpent des sables;serpent_sable;7;18;62;poison;100;7;0;0;commun;serpent;X;possible;impossible;20;Vous entendez un léger sifflement... Un serpent des sables est à vos pieds!;
+139;Python rose;pythonrose;20;15;15;poison;60;4;8;0;commun;serpent;X;possible;impossible ;35;Un très gros python rose s'enroule à votre jambe. Vous vous débattez du mieux que vous pouvez.;
+140;Anguille des eaux;anguille;5;7;20;electrocute;68;6;8;0;eau;X;X;impossible;impossible ;5;Vous sentez un courant proche de vous. Et ce n'est pas un courant d'eau!;
+141;Demon puissant;demon_puissant;25;35;18;brulure;50;10;11;12;feu;demoniaque;humano_monstre;impossible;impossible ;50;Une aura démoniaque vous donne des frissons.;
+142;Saumon;saumon;0;10;0;0;0;0;0;0;eau;poisson;X;possible;impossible ;0;Un saumon est à vos pieds!;
