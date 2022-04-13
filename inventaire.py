@@ -8,7 +8,7 @@ def remove_0(inv):
             del inv[key]
             return 1
 
-objets = recup_objet
+objets = recup_objet(nom="", all=True)
 
 from colorama import Fore,Style
 def affichage_inventaire(inv):

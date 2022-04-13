@@ -19,29 +19,14 @@ liste_complete = [
     [elt[0] for elt in recup_objet(nom=None, all=True) if elt[17] == 4]
 ]
 
-objets = recup_objet(all=True)
+stats = elt_save()
+objets = recup_objet(nom=stats[0], all=True)
 inventaire = afficher_inventaire()
 inventaire_classic = afficher_inventaire(classic=True)
 
 def boutique_main():
     achetable_0=[elt[0] for elt in recup_objet(nom=None, all=True) if elt[17] == 0]
     return achetable_0
-
-def boutique_capit():
-    achetable_1=[e['ind'] for e in objets if (int(e['Bouti-achet']) == 1)]
-    return achetable_1
-
-def boutique_port():
-    achetable_2=[e['ind'] for e in objets if (int(e['Bouti-achet']) == 2)]
-    return achetable_2
-
-def boutique_jungle():
-    achetable_3=[e['ind'] for e in objets if (int(e['Bouti-achet']) == 3)]
-    return achetable_3
-
-def boutique_volcan():
-    achetable_4=[e['ind'] for e in objets if (int(e['Bouti-achet']) == 4)]
-    return achetable_4
 
 def vente(boutique):
     afficher_inventaire(classic=True)
@@ -79,32 +64,33 @@ def vente(boutique):
                                         inventaire[nom_choix] -= quantitee
                                         print(quantitee, nom_choix, "ont été vendu.")
                                         print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
-                                        stat['argent'] = int(stat['argent']) + (quantitee * (int(objets[i]['valeur'])-(5/100)*int(objets[i]['valeur'])))
-                                        print("Vous avez maintenant ",stat['argent']," pièces.")
+                                        update_joueur(argent=(quantitee * (int(objets[i]['valeur'])-(5/100)*int(objets[i]['valeur']))))
+                                        stat_raw = elt_save()
+                                        print("Vous avez maintenant ",stat_raw[8]," pièces.")
                                         print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
                                         if inventaire[nom_choix] == 0:
                                             del inventaire[nom_choix]
-                                        vente(boutique,stat,inventaire,arme,armure)
+                                        vente(boutique)
                                     else:
                                         print("Vous ne pouvez pas vendre plus que ce que vous avez!")
-                                        vente(boutique,stat,inventaire,arme,armure)
+                                        vente(boutique)
                                 else:
                                     print("L'objet que vous voulez vendre n'est pas en votre possession...")
-                                    boutique_debut(boutique,stat,inventaire,arme,armure)
+                                    boutique_debut(boutique)
                             else:
                                 print("Vous ne pouvez pas vendre un nombre négatif d'objets, ou 0 objet!")
-                                boutique_debut(boutique,stat,inventaire,arme,armure)
+                                boutique_debut(boutique)
                         else:
                             print("Cet objet n'est pas vendable en boutique...")
-                            vente(boutique,stat,inventaire,arme,armure)
+                            vente(boutique)
         else:
             print("Vous n'avez aucun objet sur vous...")
-            boutique_debut(boutique,stat,inventaire,arme,armure)
+            boutique_debut(boutique)
 
 
 
 from inventaire import inventory_main
-def boutique_debut(boutique,stat,inventaire,arme,armure):
+def boutique_debut(boutique):
     objets = obj()
     if boutique == 0:
         boutique_indice = boutique_main()
@@ -112,22 +98,22 @@ def boutique_debut(boutique,stat,inventaire,arme,armure):
         greetings = "Bonjour, je vous souhaite la bienvenue dans ma modeste auberge, John à votre service! "
         goodbye = "Un vent de changement souffle, je le sens arriver."
     elif boutique == 1:
-        boutique_indice = boutique_capit()
+        boutique_indice = liste_complete[1]
         boutique_noms = [e["nom"] for e in objets if (int(e['Bouti-achet']) == 1)]
         greetings = "Bien le bonjour aventurier! Et bienvenue à la plus grande boutique de la capitale! Prenez le temps de décider ce que vous voulez faire et revenez à moi!"
         goodbye = "Bonne chance, dehors, les temps sont durs!"
     elif boutique ==2:
-        boutique_indice = boutique_port()
+        boutique_indice = liste_complete[2]
         boutique_noms = [e["nom"] for e in objets if (int(e['Bouti-achet']) == 2)]
         greetings = "Hééé! Oohhh! YYYAARGHHH Jeune mousse, que m'veux tu? "
         goodbye = "Bonne chance sur les mers déchaînés YAAARGHHHH!"
     elif boutique  == 3:
-        boutique_indice = boutique_jungle()
+        boutique_indice = liste_complete[3]
         boutique_noms = [e["nom"] for e in objets if (int(e['Bouti-achet']) == 3)]
         greetings = "Bonsoir, je serai votre vendeur pour aujourd'hui, vous pouvez m'appeler Rambo."
         goodbye = "Faites attention, la jungle peut s'avérer très dangereuse!"
     elif boutique == 4:
-        boutique_indice = boutique_volcan()
+        boutique_indice = liste_complete[4]
         boutique_noms = [e["nom"] for e in objets if (int(e['Bouti-achet']) == 4)]
         greetings = "HEYYY, T'AS PAS UN PEU TROP CHAUD? T'AIMERAIS QUOI?"
         goodbye = "A BIENTÔT, SI TU NE FINIS PAS GRILLÉ D'ICI LA AHAHAHAHAHAHAHAH"
@@ -152,7 +138,7 @@ def boutique_debut(boutique,stat,inventaire,arme,armure):
     if choix_march == 1:
         print("Cela tombe bien je viens de recevoir de nouveaux articles qui vont surement vous plaire !")
         print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
-        print("Voici ce que vous pouvez acheter :     | Vous avez",stat['argent'],"pièces.")
+        print("Voici ce que vous pouvez acheter :     | Vous avez",get_use()[8],"pièces.")
         for i in range(len(boutique_noms)):
             print(i+1," - ",boutique_noms[i], " : ", objets[int(boutique_indice[i])]['valeur']," pièces l'unité.")
         print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
@@ -164,7 +150,7 @@ def boutique_debut(boutique,stat,inventaire,arme,armure):
                 print(Fore.RED + "Veuillez entrer le nombre d'un des produits présent dans la boutique.")
                 print(Style.RESET_ALL)
         if choix_acheter == -1:
-            boutique_debut(boutique,stat,inventaire,arme,armure)
+            boutique_debut(boutique)
             return -1    
         indice = int(boutique_indice[choix_acheter-1])
         print("Choix :", objets[indice]["nom"])
@@ -192,8 +178,8 @@ def boutique_debut(boutique,stat,inventaire,arme,armure):
                         print(Style.RESET_ALL)
                 if quantitee_ac == 0:
                     choix_fait_quantitee = 1
-                elif stat['argent'] >= (int(valeur_indice)*quantitee_ac):
-                    stat['argent'] = int(stat['argent']) - (int(valeur_indice)*quantitee_ac)
+                elif get_use()[8] >= (int(valeur_indice)*quantitee_ac):
+                    update_joueur(argent= -(int(valeur_indice)*quantitee_ac))
                     if choix_nom in inventaire:
                         inventaire[choix_nom] = inventaire[choix_nom]+1
                         choix_fait_quantitee = 1
@@ -201,23 +187,24 @@ def boutique_debut(boutique,stat,inventaire,arme,armure):
                         if quantitee_ac >0:
                             inventaire[choix_nom]=quantitee_ac
                         print("Votre inventaire :", inventaire)
-                        print("Votre monnaie restante:", stat['argent'])
+                        print("Votre monnaie restante:", get_use()[8])
                         choix_fait_quantitee = 1
                 else:
                     print("Vous n'avez pas assez de monnaie pour acheter ",quantitee_ac, choix_nom)
                     choix_fait_quantitee = -1
-            boutique_debut(boutique,stat,inventaire,arme,armure)
+            boutique_debut(boutique)
         elif achetes == 2:
             print("Alors que faites vous ici?! Vous achetez quelque chose ou vous vous en allez, vous faites fuir les clients.")
-            boutique_debut(boutique,stat,inventaire,arme,armure) 
+            boutique_debut(boutique) 
             choix_fait=1
     elif choix_march == 2:
-        vente(boutique,stat,inventaire,arme,armure)
+        vente(boutique)
     elif choix_march == 3:
         print(goodbye)
         print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
         return -1
     elif choix_march == 4:
-        inventory_main(0,stat,inventaire,arme,armure)
-        boutique_debut(boutique,stat,inventaire,arme,armure)
+        
+        inventory_main(0,inventaire)
+        boutique_debut(boutique,inventaire)
     return -1

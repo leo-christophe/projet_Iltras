@@ -1,8 +1,5 @@
 from setup import main_setup
-main_setup()
-print("\n > Bienvenue sur Iltras, ce jeu narratif d'un univers de fantasy a été développé initialement lors d'un projet de première par Léo et Evann! \n \n")
-
-from gestion_inventaire import ajout_joueur, sauvegardes, get_use, use
+from gestion_inventaire import ajout_joueur, sauvegardes, get_use, use, afficher_joueur
 import time
 from histoire_principale import *
 from colorama import Fore,Style
@@ -10,14 +7,24 @@ from auto import wait_spacebar
 
 from classes import *
 
+def initialisation_jeu():
+    """
+    Cette fonction permet d'initialiser le jeu. elle retourne 1
+    """
+    main_setup()
+    print("\n > Bienvenue sur Iltras, ce jeu narratif d'un univers de fantasy a été développé initialement lors d'un projet de première par Léo et Evann! \n \n")
+    return 1
+
 def debut():
     """Ce programme sert à choisir sa classe de personnage.
     préconditions: le joueur doit choisir une classe avec un numéro allant de 1 à 3.
     postconditions: le programme renvoit un numéro associer à une classe (1,2 ou 3)
     """
     choix_joueur="0"
-    while (choix_joueur!="1") and (choix_joueur!="2") and (choix_joueur!="3") and (choix_joueur != "4") and (choix_joueur != "5") and (choix_joueur != "6") and (choix_joueur != "7"):
-        choix_joueur=input("Il est temps de choisir une classe : \n1-Chevalier \n2-Clypeus \n3-Lutin \n4-Joe Biden \n5-Mario \n6-Shrek \n7-Grand chanceux \n->")
+    while (
+        not(int(choix_joueur) in range(0, 8))
+    ):
+        choix_joueur = input("Il est temps de choisir une classe : \n1-Chevalier \n2-Clypeus \n3-Lutin \n4-Joe Biden \n5-Mario \n6-Shrek \n7-Grand chanceux \n->")
         print("------------------------------------------------")
     return choix_joueur
 
@@ -45,8 +52,6 @@ def classe_choix():
     """
     Ce programme sert à choisir la classe, qui sera définitif. Elle définie les statistiques. 
     """
-    inv={}
-    stat={}
     print("------------------------------------------------")
     print("Bonjour à toi aventurier, bienvenue dans le monde d'Iltras !")
     print("------------------------------------------------")
@@ -77,22 +82,14 @@ def classe_choix():
         stat= classe_chanceux.get_stats()
     ajout_joueur(nom, zone=404, vie=stat['vie'], attaque=stat['attaque'], defense=stat['defense'], chance=stat['chance'], argent=stat['argent'], arme="x", armure="x")
     print("------------------------------------------------")
-    print("Voici tes statistiques :")
-    for key,value in stat.items():
-        print(Fore.RED + f"- {key}: {value}")
-        print(Style.RESET_ALL)
-    print("------------------------------------------------")
-    arme = []
-    armure = []
     wait_spacebar()
-    histoire_principale_d(stat,arme,armure)
+    histoire_principale_d()
 
 def recup_save():
     liste_choix=afficher_joueur()
     choix_save = get_use()
     element = liste_choix[choix]
 
-    
     zone = element[3]
     if zone == 404 or zone == 0:
         return classe_choix()
@@ -119,17 +116,20 @@ def recup_save():
     elif zone == 12:
         return boss()
 
-from gestion_inventaire import afficher_joueur
+
 if __name__ == "__main__": 
-    liste_choix=afficher_joueur()
+    initialisation_jeu()
+    liste_choix = afficher_joueur()
     choix = sauvegardes()
+
     ids = [elt[2] for elt in afficher_joueur()]
+
+    use(choix)
     if choix == (len(ids)) or afficher_joueur() == []:
-        use(choix)
         classe_choix()
+
     else:
-        use(choix)
         recup_save()
 
-    
+
 
