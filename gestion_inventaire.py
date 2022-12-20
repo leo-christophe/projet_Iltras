@@ -385,10 +385,14 @@ def recup_monstre(nom, all=False):
         return liste        
 
 def elt_save():
-    id_save = get_use()
+    id_save = int(get_use())
+    
     liste_joueur = afficher_joueur()
+    
     for elt in liste_joueur:
+        print(liste_joueur)
         if elt[2] == id_save:
+            
             return elt
 
 def coherence():

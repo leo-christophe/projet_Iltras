@@ -3,26 +3,32 @@ import codecs
 from colorama import Fore,Style,Back
 from gestion_inventaire import *
 
-def obj():
-    T_obj_1=[]
-    with codecs.open('liste_objets.csv','r') as csvfile:
-        r=csv.DictReader(csvfile,delimiter=',')
-        for row in r:
-            T_obj_1.append(dict(row))
-        return T_obj_1
+def boutique_recup(boutique):
+    conn = creer_connexion(DB_FILE + ".db")
+
+    cur = conn.cursor()
+    cur.execute(
+    f"""
+    SELECT * FROM Objets
+    WHERE boutique = {boutique}
+    ORDER BY ind
+    """
+    )
+    liste = cur.fetchall()
+    conn.close()
+    return liste  
+
+liste_complete = [[elt[0] for elt in boutique_recup(i)] for i in range(0,5)]
 
 
-
-liste_complete = [
-    [elt[0] for elt in recup_objet(nom=None, all=True) if elt[17] == 0], [elt[0] for elt in recup_objet(nom=None, all=True) if elt[17] == 1],
-    [elt[0] for elt in recup_objet(nom=None, all=True) if elt[17] == 2], [elt[0] for elt in recup_objet(nom=None, all=True) if elt[17] == 3],
-    [elt[0] for elt in recup_objet(nom=None, all=True) if elt[17] == 4]
-]
 
 stats = elt_save()
+
 objets = recup_objet(nom=stats[0], all=True)
 inventaire = afficher_inventaire()
 inventaire_classic = afficher_inventaire(classic=True)
+
+ 
 
 def boutique_main():
     achetable_0=[elt[0] for elt in recup_objet(nom=None, all=True) if elt[17] == 0]
@@ -87,76 +93,35 @@ def vente(boutique):
             print("Vous n'avez aucun objet sur vous...")
             boutique_debut(boutique)
 
-
-
-from inventaire import inventory_main
-def boutique_debut(boutique):
-    objets = obj()
-    if boutique == 0:
-        boutique_indice = boutique_main()
-        boutique_noms = [e["nom"] for e in objets if (int(e['Bouti-achet']) == 0)]
-        greetings = "Bonjour, je vous souhaite la bienvenue dans ma modeste auberge, John à votre service! "
-        goodbye = "Un vent de changement souffle, je le sens arriver."
-    elif boutique == 1:
-        boutique_indice = liste_complete[1]
-        boutique_noms = [e["nom"] for e in objets if (int(e['Bouti-achet']) == 1)]
-        greetings = "Bien le bonjour aventurier! Et bienvenue à la plus grande boutique de la capitale! Prenez le temps de décider ce que vous voulez faire et revenez à moi!"
-        goodbye = "Bonne chance, dehors, les temps sont durs!"
-    elif boutique ==2:
-        boutique_indice = liste_complete[2]
-        boutique_noms = [e["nom"] for e in objets if (int(e['Bouti-achet']) == 2)]
-        greetings = "Hééé! Oohhh! YYYAARGHHH Jeune mousse, que m'veux tu? "
-        goodbye = "Bonne chance sur les mers déchaînés YAAARGHHHH!"
-    elif boutique  == 3:
-        boutique_indice = liste_complete[3]
-        boutique_noms = [e["nom"] for e in objets if (int(e['Bouti-achet']) == 3)]
-        greetings = "Bonsoir, je serai votre vendeur pour aujourd'hui, vous pouvez m'appeler Rambo."
-        goodbye = "Faites attention, la jungle peut s'avérer très dangereuse!"
-    elif boutique == 4:
-        boutique_indice = liste_complete[4]
-        boutique_noms = [e["nom"] for e in objets if (int(e['Bouti-achet']) == 4)]
-        greetings = "HEYYY, T'AS PAS UN PEU TROP CHAUD? T'AIMERAIS QUOI?"
-        goodbye = "A BIENTÔT, SI TU NE FINIS PAS GRILLÉ D'ICI LA AHAHAHAHAHAHAHAH"
-    print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
-    print(greetings)
-    print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
-    print("Comment pourrais-je vous aider ?")
-    print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
-    print("1. ACHETER")
-    print("2. VENDRE")
-    print("3. PARTIR")
-    print("4. INVENTAIRE ")
-    choix_march = 0
-    print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
-    while ((choix_march) !=1) and ((choix_march)!=2) and ((choix_march) != 3) and ((choix_march != 4)):
-        try:
-            choix_march=int(input("Bon j'ai une livraison qui m'attend. Que puis-je faire pour vous ? 1- Acheter 2- Vendre 3- Partir 4- Inventaire ->"))
-        except ValueError:
-            print(Fore.RED + "Tapez 1,2,3 ou 4!!!")
-            print(Style.RESET_ALL)
-    print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
-    if choix_march == 1:
+def boutique_acheter(boutique):
+        boutique_indice = liste_complete[boutique]
+        
         print("Cela tombe bien je viens de recevoir de nouveaux articles qui vont surement vous plaire !")
         print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
-        print("Voici ce que vous pouvez acheter :     | Vous avez",get_use()[8],"pièces.")
-        for i in range(len(boutique_noms)):
-            print(i+1," - ",boutique_noms[i], " : ", objets[int(boutique_indice[i])]['valeur']," pièces l'unité.")
+        id = get_use()
+        print("Voici ce que vous pouvez acheter :     | Vous avez",afficher_joueur()[id-1][8],"pièces.")
+
+        for i in range(len(boutique_recup(boutique))):
+            print(i+1," - ",boutique_recup(boutique)[i][1], " : ", boutique_recup(boutique)[i][7]," pièces l'unité.")  #objet[7] correspond à la valeur de l'objet
         print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
+
+        
         choix_acheter = -500
-        while choix_acheter < -1 or choix_acheter == 0 or choix_acheter > len(boutique_noms):
+        while choix_acheter < -1 or choix_acheter == 0 or choix_acheter > len(boutique_recup(boutique)):
             try :
                 choix_acheter = int(input("Que voulez vous acheter? (Entrez le numéro correspondant ou tapez -1 pour revenir en arrière) ->"))
-            except ValueError or (choix_acheter > len(boutique_noms) or choix_acheter < -1):
+            except ValueError or (choix_acheter > len(boutique_recup(boutique)) or choix_acheter < -1):
                 print(Fore.RED + "Veuillez entrer le nombre d'un des produits présent dans la boutique.")
                 print(Style.RESET_ALL)
         if choix_acheter == -1:
             boutique_debut(boutique)
             return -1    
+        print(boutique_indice)
         indice = int(boutique_indice[choix_acheter-1])
-        print("Choix :", objets[indice]["nom"])
-        valeur_indice = (objets[indice][('valeur')])
-        print("Prix à l'unité:",(objets[indice][('valeur')])," pièces ")
-        choix_nom = (objets[indice]["nom"])
+        print("Choix :", objets[indice][1])
+        valeur_indice = (objets[indice][7])
+        print("Prix à l'unité:",(objets[indice][7])," pièces ")
+        choix_nom = (objets[indice][1])
         achetes = -5
         while ((achetes != 1) or (achetes != 2)):
             try:
@@ -176,18 +141,21 @@ def boutique_debut(boutique):
                     except ValueError:
                         print(Fore.RED + "Tapez un nombre au dessus ou égal à 0!")
                         print(Style.RESET_ALL)
+                
+
                 if quantitee_ac == 0:
                     choix_fait_quantitee = 1
-                elif get_use()[8] >= (int(valeur_indice)*quantitee_ac):
+
+                elif afficher_joueur()[get_use()-1][8] >= (int(valeur_indice)*quantitee_ac):
                     update_joueur(argent= -(int(valeur_indice)*quantitee_ac))
                     if choix_nom in inventaire:
-                        inventaire[choix_nom] = inventaire[choix_nom]+1
+                        ajouter_inventaire(choix_nom, 1)
                         choix_fait_quantitee = 1
                     else:
                         if quantitee_ac >0:
-                            inventaire[choix_nom]=quantitee_ac
+                            update_inventaire(choix_nom, quantitee_ac)
                         print("Votre inventaire :", inventaire)
-                        print("Votre monnaie restante:", get_use()[8])
+                        print("Votre monnaie restante:", afficher_joueur()[get_use()-1][8])
                         choix_fait_quantitee = 1
                 else:
                     print("Vous n'avez pas assez de monnaie pour acheter ",quantitee_ac, choix_nom)
@@ -197,14 +165,65 @@ def boutique_debut(boutique):
             print("Alors que faites vous ici?! Vous achetez quelque chose ou vous vous en allez, vous faites fuir les clients.")
             boutique_debut(boutique) 
             choix_fait=1
+
+from inventaire import inventory_main
+def boutique_debut(boutique):
+
+    if boutique == 0:
+        greetings = "Bonjour, je vous souhaite la bienvenue dans ma modeste auberge, John à votre service! "
+        goodbye = "Un vent de changement souffle, je le sens arriver."
+    elif boutique == 1:
+        greetings = "Bien le bonjour aventurier! Et bienvenue à la plus grande boutique de la capitale! Prenez le temps de décider ce que vous voulez faire et revenez à moi!"
+        goodbye = "Bonne chance, dehors, les temps sont durs!"
+    elif boutique ==2:
+        greetings = "Hééé! Oohhh! YYYAARGHHH Jeune mousse, que m'veux tu? "
+        goodbye = "Bonne chance sur les mers déchaînés YAAARGHHHH!"
+    elif boutique  == 3:
+        greetings = "Bonsoir, je serai votre vendeur pour aujourd'hui, vous pouvez m'appeler Rambo."
+        goodbye = "Faites attention, la jungle peut s'avérer très dangereuse!"
+    elif boutique == 4:
+        greetings = "HEYYY, T'AS PAS UN PEU TROP CHAUD? T'AIMERAIS QUOI?"
+        goodbye = "A BIENTÔT, SI TU NE FINIS PAS GRILLÉ D'ICI LA AHAHAHAHAHAHAHAH"
+
+    
+    
+    print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
+    print(greetings)
+
+    # CHOIX DE L'ACTION
+    # On demande ce que le joueur veut faire en entrant dans la boutique.
+    print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
+    print("Comment pourrais-je vous aider ?")
+    print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
+    print("1. ACHETER")
+    print("2. VENDRE")
+    print("3. PARTIR")
+    print("4. INVENTAIRE ")
+    choix_march = 0
+    print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
+    while ((choix_march) !=1) and ((choix_march)!=2) and ((choix_march) != 3) and ((choix_march != 4)):
+        try:
+            choix_march=int(input("Bon j'ai une livraison qui m'attend. Que puis-je faire pour vous ? 1- Acheter 2- Vendre 3- Partir 4- Inventaire ->"))
+        except ValueError:
+            print(Fore.RED + "Tapez 1,2,3 ou 4!!!")
+            print(Style.RESET_ALL)
+    print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
+
+    # CHOIX : ACHETER
+    if choix_march == 1:
+        boutique_acheter(boutique)
+    # CHOIX : VENDRE
     elif choix_march == 2:
         vente(boutique)
+    # CHOIX : PARTIR
     elif choix_march == 3:
         print(goodbye)
         print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
         return -1
-    elif choix_march == 4:
-        
+    # CHOIX : REGARDER INVENTAIRE
+    elif choix_march == 4:  
         inventory_main(0,inventaire)
         boutique_debut(boutique,inventaire)
     return -1
+boutique_debut(0)
+

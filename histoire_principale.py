@@ -756,7 +756,7 @@ def histoire_principale_d():
             print("Vous vous dirigez vers une grande boutique dont l'enseigne ne tient en place que par la volonté de dieu.")
             print("Vous y entrez d'un pas déterminé !")
             print("------------------------------------------------")
-            boutique_debut(0, afficher_inventaire)
+            boutique_debut(0)
         elif choix_2=="2":
             print("Vous pensez que ce n'est qu'une perte de temps, donc, vous sortez directement du village.")
         print("Vous arrivez à la sortie du village, 3 chemins s'offrent à vous.")

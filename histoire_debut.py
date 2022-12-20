@@ -59,6 +59,7 @@ def classe_choix():
     print("Maintenant,",nom,", tu dois choisir une classe.")
     print("------------------------------------------------")
     c_c = debut()
+    stat = classe_chevalier.get_stats()
     if c_c == "1":
         print("Par la bénédiction de la sainte frite, te voila Chevalier !!!")
         stat = classe_chevalier.get_stats()
