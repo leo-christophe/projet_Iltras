@@ -379,10 +379,10 @@ def jeter(specification,stat,inv,arme,armure):
 def inventory_main(specification,stat,inv):
     affichage_stats(specification,stat,inv)
     print("ACTIONS :")
-    print("1. ÉQUIPER / UTILISER")
-    print("2. ENLEVER (ARME/ARMURE)")
-    print("3. JETER")
-    print("4. ANNULER")
+    print("\t 1. ÉQUIPER / UTILISER")
+    print("\t 2. ENLEVER (ARME/ARMURE)")
+    print("\t 3. JETER")
+    print("\t 4. ANNULER")
     print("-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'")
     choice = "0"
     while ((choice != "1") and (choice != "2") and (choice !="3") and (choice != "4")):

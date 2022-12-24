@@ -247,10 +247,10 @@ def afficher_inventaire(classic = False):
         for i in range(len(liste)):
             print(i+1,"-",liste[i][1])
     elif liste == []:
-        print("Vous n'avez rien dans votre inventaire!")
+        return 0
     return liste
 
-def ajouter_inventaire(nom,quantite=1):
+def ajouter_inventaire(nom, quantite=1):
     liste = get_use()
     choix_save = liste
     conn = creer_connexion(DB_FILE + ".db")
@@ -358,6 +358,21 @@ def recup_objet(nom, all=False):
         conn.close()
         return liste        
 
+def boutique_recup(boutique):
+    conn = creer_connexion(DB_FILE + ".db")
+
+    cur = conn.cursor()
+    cur.execute(
+    f"""
+    SELECT * FROM Objets
+    WHERE boutique = {boutique}
+    ORDER BY ind
+    """
+    )
+    liste = cur.fetchall()
+    conn.close()
+    return liste  
+
 def recup_monstre(nom, all=False):
     conn = creer_connexion(DB_FILE + ".db")
 
@@ -399,6 +414,8 @@ def coherence():
     #! Vérification cohérence inventaire
     conn = creer_connexion(DB_FILE + ".db")
     liste_objets = afficher_inventaire()
+    if liste_objets == 0:
+        return 0
     for tuples in liste_objets:
         if int(tuples[2]) <= 0:
             cur = conn.cursor()

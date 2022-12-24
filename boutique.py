@@ -1,170 +1,196 @@
-import csv
-import codecs
-from colorama import Fore,Style,Back
+from colorama import Fore,Style
 from gestion_inventaire import *
+from time import sleep
 
-def boutique_recup(boutique):
-    conn = creer_connexion(DB_FILE + ".db")
-
-    cur = conn.cursor()
-    cur.execute(
-    f"""
-    SELECT * FROM Objets
-    WHERE boutique = {boutique}
-    ORDER BY ind
-    """
-    )
-    liste = cur.fetchall()
-    conn.close()
-    return liste  
-
-liste_complete = [[elt[0] for elt in boutique_recup(i)] for i in range(0,5)]
-
-
-
-stats = elt_save()
-
-objets = recup_objet(nom=stats[0], all=True)
-inventaire = afficher_inventaire()
-inventaire_classic = afficher_inventaire(classic=True)
-
- 
-
-def boutique_main():
-    achetable_0=[elt[0] for elt in recup_objet(nom=None, all=True) if elt[17] == 0]
-    return achetable_0
+class Boutique():
+    liste_complete = [[elt[0] for elt in boutique_recup(i)] for i in range(0,5)]
+    stats = elt_save()
+    objets = recup_objet(nom=stats[0], all=True)
+    inventaire = afficher_inventaire()
+    inventaire_classic = afficher_inventaire(classic=True)
 
 def vente(boutique):
+    """
+    Cette fonction permet de vendre dans n'improte quelle boutique
+    """
+    if afficher_inventaire(classic=True) == 0:
+        print(Fore.RED + "Vous n'avez rien à vendre! " + Style.RESET_ALL)
+        return boutique_debut(boutique)
+
+    print("\t << Vous voulez vendre? Compris. Qu'avez-vous donc? >> \n")
     afficher_inventaire(classic=True)
     print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
+
+    # Le choix de la vente
     choix_vente = -999
-    while (choix_vente > len(list(inventaire)) or choix_vente <= 0):
+    # Tant qu'un choix n'a pas été fait
+    tailleInventaire = len(list(Boutique.inventaire))
+    while (choix_vente > tailleInventaire) or (choix_vente < -1 or choix_vente == 0):
         try:
-            choix_vente = int(input("Que voulez vous vendre ? | Choisissez l'objet ou tapez -1 pour annuler. -> "))
-            break
+            choix_vente = int(input("Que voulez vous vendre ? \t Choisissez l'objet ou tapez -1 pour annuler. \n-> "))
+            
         except ValueError:
-            print(Fore.RED + "Vous devez entrer un nombre!")
+            print(Fore.RED + "Entrez un nombre strictement supérieur à 0 ou -1 pour annuler!")
+            print(Style.RESET_ALL)
+
+    #! SI LE JOUEUR DECIDE FINALEMENT DE NE RIEN VENDRE
     if choix_vente == -1:
-        boutique_debut(boutique)
+        return boutique_debut(boutique)
+    # S'il y a un choix de vente
+
+    if Boutique.inventaire == []:
+        print("Vous n'avez aucune objet sur vous!!")
+        return vente(boutique)
     else:
-        if inventaire != []:
-            if inventaire[choix_vente-1] in inventaire_classic:
-                nom_choix = inventaire[choix_vente-1]
-                T=[S for S in objets] #Tableau de tout les noms d'objet de 0 à indice max
-                objet_utilise="0"
-                for e in range(len(T)):
-                    if T[e][1] == nom_choix[1]:
-                        T[e][1]= objet_utilise
-                        i = e #L'indice i de l'objet
-                        if objets[i]['vendable'] == "1":
-                            quantitee = 10000
-                            while ((quantitee > inventaire[nom_choix]) or (quantitee < 0)):
-                                try:
-                                    quantitee = int(input("Combien de cet objet voulez vous vendre ? -> "))
-                                except ValueError:
-                                    print("Vous devez entrer un nombre!")
-                                print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
-                            if quantitee > 0:
-                                if nom_choix in inventaire:
-                                    if (inventaire[nom_choix] - quantitee) >= 0:
-                                        inventaire[nom_choix] -= quantitee
-                                        print(quantitee, nom_choix, "ont été vendu.")
-                                        print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
-                                        update_joueur(argent=(quantitee * (int(objets[i]['valeur'])-(5/100)*int(objets[i]['valeur']))))
-                                        stat_raw = elt_save()
-                                        print("Vous avez maintenant ",stat_raw[8]," pièces.")
-                                        print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
-                                        if inventaire[nom_choix] == 0:
-                                            del inventaire[nom_choix]
-                                        vente(boutique)
-                                    else:
-                                        print("Vous ne pouvez pas vendre plus que ce que vous avez!")
-                                        vente(boutique)
-                                else:
-                                    print("L'objet que vous voulez vendre n'est pas en votre possession...")
-                                    boutique_debut(boutique)
-                            else:
-                                print("Vous ne pouvez pas vendre un nombre négatif d'objets, ou 0 objet!")
-                                boutique_debut(boutique)
-                        else:
-                            print("Cet objet n'est pas vendable en boutique...")
-                            vente(boutique)
-        else:
-            print("Vous n'avez aucun objet sur vous...")
-            boutique_debut(boutique)
+        # Si l'inventaire n'est pas vide
+
+        indiceObjetInventaireAVendre = choix_vente - 1
+        if Boutique.inventaire[indiceObjetInventaireAVendre] in Boutique.inventaire_classic:
+            nom_choix = Boutique.inventaire[indiceObjetInventaireAVendre]
+
+            nomObjets = [S for S in Boutique.objets] #Tableau de tout les noms d'objet de 0 à indice max
+            nomObjetAVendre = "0"
+
+            # On retrouve le nom de l'objet à partir de l'indice
+            for indiceObjet in range(len(nomObjets)):
+                if nomObjets[indiceObjet][1] == nom_choix[1]:
+                    nomObjetAVendre = nomObjets[indiceObjet][1]
+                    # On sauvegarde le nom de l'objet à vendre
+                    indiceObjetSave = indiceObjet
+                    # On sauvegarde l'indice de l'objet à vendre dans le tableau d'objets
+
+            if nomObjetAVendre == "0":
+                return Exception()
+
+            #! SI L'OBJET N'EST PAS VENDABLE
+            if Boutique.objets[indiceObjetSave][18] != 1:
+                print("Cet objet n'est pas vendable en boutique...")
+                return vente(boutique)
+
+            quantite = 10000
+            #! Tant que la quantité que le joueur veut vendre dépasse le nombre d'objet ou que la quantité est négative
+            while quantite > Boutique.inventaire[indiceObjetInventaireAVendre][2] or quantite < 0:
+                try:
+                    quantite = int(input("Combien de cet objet voulez vous vendre ? -> "))
+                except ValueError:
+                    print("Vous devez entrer un nombre!")
+                print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
+
+            # Si la quantité que le joueur veut vendre "existe"
+            if (Boutique.inventaire[indiceObjetInventaireAVendre][2] - quantite) >= 0:
+                update_inventaire(nomObjetAVendre, -quantite)
+                print(quantite, nom_choix, "ont été vendu.")
+                print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
+                update_joueur(argent=(quantite * (int(Boutique.objets[indiceObjetSave][7])-(5/100)*int(Boutique.objets[indiceObjetSave][7]))))
+                print("Vous avez maintenant ",Boutique.stats[8]," pièces.")
+                print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
+
+                if Boutique.inventaire[indiceObjetInventaireAVendre][2] == 0:
+                    delete_elt(nomObjetAVendre)
+            
+            # Si le joueur essaye de vendre plus que ce qu'il a
+            else:
+                print("Vous ne pouvez pas vendre plus que ce que vous avez!")
+    #! On rappelle la fonction vente
+    return vente(boutique)
 
 def boutique_acheter(boutique):
-        boutique_indice = liste_complete[boutique]
-        
-        print("Cela tombe bien je viens de recevoir de nouveaux articles qui vont surement vous plaire !")
-        print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
-        id = get_use()
-        print("Voici ce que vous pouvez acheter :     | Vous avez",afficher_joueur()[id-1][8],"pièces.")
+    """
+    Cette fonction permet de gérer l'achat de produit dans les boutiques.
+    """
+    boutique_indice = Boutique.liste_complete[boutique]
+    id = get_use()-1
+    argentJoueur = afficher_joueur()[id][8]
+    
+    print("Cela tombe bien je viens de recevoir de nouveaux articles qui vont surement vous plaire !")
+    print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
+    print("Voici ce que vous pouvez acheter :     | Vous avez", argentJoueur, "pièces.")
 
-        for i in range(len(boutique_recup(boutique))):
-            print(i+1," - ",boutique_recup(boutique)[i][1], " : ", boutique_recup(boutique)[i][7]," pièces l'unité.")  #objet[7] correspond à la valeur de l'objet
-        print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
+    for i in range(len(boutique_recup(boutique))):
+        print(i+1," - ",boutique_recup(boutique)[i][1], " : ", boutique_recup(boutique)[i][7]," pièces l'unité.")  #objet[7] correspond à la valeur de l'objet
+    print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
 
-        
-        choix_acheter = -500
-        while choix_acheter < -1 or choix_acheter == 0 or choix_acheter > len(boutique_recup(boutique)):
-            try :
-                choix_acheter = int(input("Que voulez vous acheter? (Entrez le numéro correspondant ou tapez -1 pour revenir en arrière) ->"))
-            except ValueError or (choix_acheter > len(boutique_recup(boutique)) or choix_acheter < -1):
-                print(Fore.RED + "Veuillez entrer le nombre d'un des produits présent dans la boutique.")
-                print(Style.RESET_ALL)
-        if choix_acheter == -1:
-            boutique_debut(boutique)
-            return -1    
-        print(boutique_indice)
-        indice = int(boutique_indice[choix_acheter-1])
-        print("Choix :", objets[indice][1])
-        valeur_indice = (objets[indice][7])
-        print("Prix à l'unité:",(objets[indice][7])," pièces ")
-        choix_nom = (objets[indice][1])
-        achetes = -5
-        while ((achetes != 1) or (achetes != 2)):
-            try:
-                achetes=int(input("Voulez vous vraiment acheter ceci ? \n1: OUI \n2: NON\n-> "))
-                if ((achetes == 1) or (achetes == 2)):
-                    break
-            except ValueError:
-                print(Fore.RED + "Tapez 1 ou 2 uniquement!")
-                print(Style.RESET_ALL)
-        if achetes == 1:
-            choix_fait_quantitee = -1
-            while choix_fait_quantitee == -1:
-                quantitee_ac = -5
-                while quantitee_ac < 0:
-                    try:
-                        quantitee_ac = int(input("Combien de cet objet voulez vous acheter ? -> "))
-                    except ValueError:
-                        print(Fore.RED + "Tapez un nombre au dessus ou égal à 0!")
-                        print(Style.RESET_ALL)
-                
+    choix_acheter = -500
+    # Tant que le choix de l'achat n'est pas valide
+    while choix_acheter < -1 or choix_acheter == 0 or choix_acheter > len(boutique_recup(boutique)):
+        try :
+            choix_acheter = int(input("Que voulez vous acheter? (Entrez le numéro correspondant ou tapez -1 pour revenir en arrière) ->"))
+        except ValueError or (choix_acheter > len(boutique_recup(boutique)) or choix_acheter < -1):
+            print(Fore.RED + "Veuillez entrer le nombre d'un des produits présent dans la boutique.")
+            print(Style.RESET_ALL)
+    if choix_acheter == -1:
+        boutique_debut(boutique)
+        return -1    
+    indice = int(boutique_indice[choix_acheter-1])
+    print("\n ||| Choix :", Boutique.objets[indice][1]  + "\t Prix à l'unité:",(Boutique.objets[indice][7])," pièces |||")
+    print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
+    valeur_indice = (Boutique.objets[indice][7])
+    choix_nom = (Boutique.objets[indice][1])
 
-                if quantitee_ac == 0:
-                    choix_fait_quantitee = 1
+    achetes = -5
+    #! CONFIRMATION ACHAT
+    # CELA VERIFIE SI LE JOUEUR VEUT BIEN ACHETER LE PRODUIT
+    while ((achetes != 1) or (achetes != 2)):
+        try:
+            achetes=int(input("Voulez vous vraiment acheter ceci ? \n1: OUI \n2: NON\n-> "))
+            if ((achetes == 1) or (achetes == 2)):
+                break
+        except ValueError:
+            print(Fore.RED + "Tapez 1 ou 2 uniquement!")
+            print(Style.RESET_ALL)
 
-                elif afficher_joueur()[get_use()-1][8] >= (int(valeur_indice)*quantitee_ac):
-                    update_joueur(argent= -(int(valeur_indice)*quantitee_ac))
-                    if choix_nom in inventaire:
-                        ajouter_inventaire(choix_nom, 1)
-                        choix_fait_quantitee = 1
-                    else:
-                        if quantitee_ac >0:
-                            update_inventaire(choix_nom, quantitee_ac)
-                        print("Votre inventaire :", inventaire)
-                        print("Votre monnaie restante:", afficher_joueur()[get_use()-1][8])
-                        choix_fait_quantitee = 1
+    # SI LE JOUEUR VEUT BIEN ACHETER LE PRODUIT
+    if achetes == 1:
+        #! CHOIX QUANTITE
+        # ON DEMANDE LA QUANTITE A ACHETER
+        choix_fait_quantite = -1
+        #? La variable vérifiant que le choix a été fait
+
+        while choix_fait_quantite == -1:
+            quantiteAchetee = -5
+            #? La quantité achetée
+
+            while quantiteAchetee < 0:
+                try:
+                    quantiteAchetee = int(input("Combien de cet objet voulez vous acheter ? -> "))
+                except ValueError:
+                    print(Fore.RED + "Tapez un nombre au dessus ou égal à 0!")
+                    print(Style.RESET_ALL)
+
+            # SI LA QUANTITE ACHETEE DEMANDE EST DE 0, ON NE FAIT RIEN.
+            if quantiteAchetee == 0:
+                choix_fait_quantite = 1
+
+            # SI LA QUANTITE EST SUPERIEURE A 0, ON VERIFIE QUE LE JOUEUR A L'ARGENT, S'IL L'A ON LUI DONNE
+            elif argentJoueur >= (int(valeur_indice)*quantiteAchetee):
+                # On enlève l'argent au joueur
+                update_joueur(argent= -(int(valeur_indice)*quantiteAchetee))
+
+                # On ajoute l'objet dans l'inventaire du joueur
+                if Boutique.inventaire == 0:
+                    update_inventaire(choix_nom, quantiteAchetee)
+                elif choix_nom in Boutique.inventaire:
+                    ajouter_inventaire(choix_nom, quantiteAchetee)
                 else:
-                    print("Vous n'avez pas assez de monnaie pour acheter ",quantitee_ac, choix_nom)
-                    choix_fait_quantitee = -1
-            boutique_debut(boutique)
-        elif achetes == 2:
-            print("Alors que faites vous ici?! Vous achetez quelque chose ou vous vous en allez, vous faites fuir les clients.")
-            boutique_debut(boutique) 
-            choix_fait=1
+                    update_inventaire(choix_nom, quantiteAchetee)
+
+                #? On redéfinit argentJoueur après avoir enlever l'argent
+                argentJoueur = afficher_joueur()[id][8]
+                # Affichages
+                print("Votre inventaire :", Boutique.inventaire)
+                print("Votre monnaie restante:", argentJoueur)
+                    
+                choix_fait_quantite = 1
+            else:
+                print("Vous n'avez pas assez de monnaie pour acheter ",quantiteAchetee, choix_nom)
+                choix_fait_quantite = -1
+
+    #! SI LE JOUEUR NE VEUT PAS ACHETER LE PRODUIT
+    elif achetes == 2:
+        print("Alors que faites vous ici?! Vous achetez quelque chose ou vous vous en allez, vous faites fuir les clients.")
+        sleep(1.2)
+    return boutique_debut(boutique)
+        
 
 from inventaire import inventory_main
 def boutique_debut(boutique):
@@ -222,8 +248,8 @@ def boutique_debut(boutique):
         return -1
     # CHOIX : REGARDER INVENTAIRE
     elif choix_march == 4:  
-        inventory_main(0,inventaire)
-        boutique_debut(boutique,inventaire)
+        inventory_main(0, Boutique.inventaire)
+        boutique_debut(boutique, Boutique.inventaire)
     return -1
-boutique_debut(0)
+#boutique_debut(0)
 

@@ -88,7 +88,6 @@ def classe_choix():
 
 def recup_save():
     liste_choix=afficher_joueur()
-    choix_save = get_use()
     element = liste_choix[choix]
 
     zone = element[3]
@@ -124,8 +123,8 @@ if __name__ == "__main__":
     choix = sauvegardes()
 
     ids = [elt[2] for elt in afficher_joueur()]
-
     use(choix)
+
     if choix == (len(ids)) or afficher_joueur() == []:
         classe_choix()
 
