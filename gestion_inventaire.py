@@ -234,9 +234,11 @@ def afficher_inventaire(classic = False):
     conn = creer_connexion(DB_FILE + ".db")
     cur = conn.cursor()
     cur.execute(
-        """
+        f"""
         SELECT *
         FROM Inventaire 
+        INNER JOIN Joueurs ON Inventaire.id = Joueurs.id_save
+        WHERE Inventaire.id = {get_use()}
         ORDER BY nom
         """
     )
@@ -255,9 +257,12 @@ def ajouter_inventaire(nom, quantite=1):
     choix_save = liste
     conn = creer_connexion(DB_FILE + ".db")
     liste_inv = afficher_inventaire()
-    for elt in liste_inv:
-        if elt[1] == nom and elt[0] == choix_save:
-            return update_inventaire(nom, quantite)
+
+    if liste_inv != 0:
+        for elt in liste_inv:
+            if elt[1] == nom and elt[0] == choix_save:
+                return update_inventaire(nom, quantite)
+
     date = get_time()
     conn = creer_connexion(DB_FILE + ".db")
     cur = conn.cursor()
@@ -281,8 +286,8 @@ def update_inventaire(nom ,quantite=1):
         cur.execute(
             f"""
             UPDATE Inventaire
-            SET quantite = quantite + '{quantite}'
-            WHERE nom = '{nom}' AND id = '{save}'
+            SET Inventaire.quantite = Inventaire.quantite + '{quantite}'
+            WHERE Inventaire.nom = '{nom}' AND Inventaire.id = '{save}'
             """
         )
         cur.fetchall()

@@ -1,4 +1,3 @@
-import csv, codecs
 from colorama import *
 from gestion_inventaire import *
 
@@ -10,104 +9,135 @@ def remove_0(inv):
 
 objets = recup_objet(nom="", all=True)
 
-from colorama import Fore,Style
-def affichage_inventaire(inv):
-    E = []
-    I = [(i['ind'],i['nom']) for i in objets if i['nom'] in inv]
-    print("☰☱☲☴☵☱☲☴☵☱☲☴ ◐ INVENTAIRE ◑ ☴☲☱☵☴☲☱☵☴☲☱☰")
-    for key,value in inv.items():
-        E.append(value)
-    sorted(E)
-    for i in range(len(list(inv))):
-        if I[i][1] in inv:
-            if objets[int(I[i][0])]['rar'] == "com":
-                print("",i+1,".",list(inv)[i],":",E[i])
-            elif objets[int(I[i][0])]['rar'] == "rar":
-                print(Fore.LIGHTRED_EX + "",i+1,".",list(inv)[i],":",E[i])
-            elif objets[int(I[i][0])]['rar'] == "epi":
-                print(Fore.MAGENTA + "",i+1,".",list(inv)[i],":",E[i])
-            elif objets[int(I[i][0])]['rar'] == "leg":
-                print(Fore.CYAN + "",i+1,".",list(inv)[i],":",E[i])
-        print(Style.RESET_ALL)
+def affichage_inventaire():
+    """
+    Cette fonction permet d'afficher chaque objet de l'inventaire selon la rareté
+    """
+    if afficher_inventaire() != 0:
 
-def affichage_stats(specification,stat,inv,arme,armure):
+        listeObjets = objets
+        inventaireJoueur = sorted(afficher_inventaire())
+
+        idObjetsInventaireJoueur = []
+        for i in range(len(inventaireJoueur)):
+            for j in range(len(listeObjets)):
+                if inventaireJoueur[i][1] == listeObjets[j][1]:
+                    idObjetsInventaireJoueur += [listeObjets[j][0]]    
+        print(idObjetsInventaireJoueur)
+
+    else:
+        print("Vous n'avez rien dans votre inventaire!")
+        return 0
+
+    listeObjets = objets
+
+    rareteObjets = [listeObjets[idObjetsInventaireJoueur[i]][2] for i in range(len(inventaireJoueur))]
+    print("☰☱☲☴☵☱☲☴☵☱☲☴ ◐ INVENTAIRE ◑ ☴☲☱☵☴☲☱☵☴☲☱☰")
+
+    for i in range(len(inventaireJoueur)):
+        nomObjet = inventaireJoueur[i][1]
+        quantiteObjet = inventaireJoueur[i][2]
+
+        if rareteObjets[i] == "rar":
+            print(Fore.LIGHTRED_EX)
+        elif rareteObjets[i] == "epi":
+            print(Fore.MAGENTA)
+        elif rareteObjets[i] == "leg":
+            print(Fore.CYAN)
+        print("",i+1,".",nomObjet,":",quantiteObjet)
+        print(Style.RESET_ALL)
+        
+    print(Style.RESET_ALL)
+
+def affichage_stats():
+    statsJoueur = afficher_joueur()[get_use()-1]
+
+    # LA VIE
+    if 0 < statsJoueur[4] < 10:
+        barVie="🖤                                   "
+    elif 10 <= statsJoueur[4] < 20:
+        barVie="💓                                   "
+    elif 20 <= statsJoueur[4] < 30:
+        barVie="❤️ ❤️                                "
+    elif 30 <= statsJoueur[4] < 40:
+        barVie="❤️ ❤️ ❤️                             "
+    elif 40 <= statsJoueur[4] < 50:
+        barVie="🧡 🧡 🧡 🧡                          "
+    elif 50 <= statsJoueur[4] < 60:
+        barVie="🧡 🧡 🧡 🧡 🧡                      "
+    elif 60 <= statsJoueur[4] < 70:
+        barVie="💛 💛 💛 💛 💛 💛                   "
+    elif 70 <= statsJoueur[4] < 80:
+        barVie="💛 💛 💛 💛 💛 💛 💛               "
+    elif 80 <= statsJoueur[4] < 90:
+        barVie="💚 💚 💚 💚 💚 💚 💚 💚            "
+    elif 90 <= statsJoueur[4] < 100:
+        barVie="💚 💚 💚 💚 💚 💚 💚 💚 💚        "
+    else:
+        barVie="💚 💚 💚 💚 💚 💚 💚 💚 💚 💚     "
+
+    # LA DEFENSE
+    if 0 <= statsJoueur[6] < 10:
+        barDefense="🛡️                                    "
+    elif 10 >= statsJoueur[6] > 20:
+        barDefense="🛡️                                    "
+    elif 20 >= statsJoueur[6] > 30:
+        barDefense="🛡️ 🛡️                                 "
+    elif 30 >= statsJoueur[6] > 40:
+        barDefense="🛡️ 🛡️ 🛡️                              "
+    elif 40 >= statsJoueur[6] > 50:
+        barDefense="🛡️ 🛡️ 🛡️ 🛡️                           "
+    else:
+        barDefense="🛡️ 🛡️ 🛡️ 🛡️ 🛡️                        "
+
+    # L'ATTAQUE
+    if 0 <= statsJoueur[5] < 10:
+        barAttaque="⚔️                                    "
+    elif 10 <= statsJoueur[5] < 20:
+        barAttaque="⚔️                                    "
+    elif 20 <= statsJoueur[5] < 30:
+        barAttaque="⚔️ ⚔️                                 "
+    elif 30 <= statsJoueur[5] < 40:
+        barAttaque="⚔️ ⚔️ ⚔️                             "
+    elif 40 <= statsJoueur[5] < 50:
+        barAttaque="⚔️ ⚔️ ⚔️ ⚔️                          "
+    else:
+        barAttaque="⚔️ ⚔️ ⚔️ ⚔️ ⚔️                       "
+
+    # LA CHANCE
+    if 0 <= statsJoueur[7] < 10:
+        barChance="🍀                                     "
+    elif 10 <= statsJoueur[7] < 40:
+        barChance="🍀 🍀                                  "
+    elif 40 <= statsJoueur[7] < 70:
+        barChance="🍀 🍀 🍀                               "
+    elif 70 <= statsJoueur[7] < 75:
+        barChance="🍀 🍀 🍀 🍀                           "
+    elif statsJoueur[7] >= 75:  
+        barChance="🍀 🍀 🍀 🍀 🍀                        "
+
     print("-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'")
     print("Vos statistiques :")
-    bar="❤︎ ❤︎ ❤︎ ❤︎ ❤︎ ❤︎ ❤︎ ❤︎ ❤︎ ❤︎"
-    if int(stat['vie']) >= 0 and int(stat['vie'])<10:
-        bar="🖤                                   "
-    if int(stat['vie']) >= 10 and int(stat['vie'])<20:
-        bar="💓                                   "
-    elif int(stat['vie']) >= 20 and int(stat['vie'])<30:
-        bar="❤️ ❤️                                "
-    elif int(stat['vie']) >= 30 and int(stat['vie'])<40:
-        bar="❤️ ❤️ ❤️                             "
-    elif int(stat['vie']) >= 40 and int(stat['vie'])<50:
-        bar="🧡 🧡 🧡 🧡                          "
-    elif int(stat['vie']) >= 50 and int(stat['vie'])<60:
-        bar="🧡 🧡 🧡 🧡 🧡                      "
-    elif int(stat['vie']) >= 60 and int(stat['vie'])<70:
-        bar="💛 💛 💛 💛 💛 💛                   "
-    elif int(stat['vie']) >= 70 and int(stat['vie'])<80:
-        bar="💛 💛 💛 💛 💛 💛 💛               "
-    elif int(stat['vie']) >= 80 and int(stat['vie'])<90:
-        bar="💚 💚 💚 💚 💚 💚 💚 💚            "
-    elif int(stat['vie']) >= 90 and int(stat['vie'])<100:
-        bar="💚 💚 💚 💚 💚 💚 💚 💚 💚        "
-    elif int(stat['vie']) == 100:
-        bar="💚 💚 💚 💚 💚 💚 💚 💚 💚 💚     "
-    bar1 = "defense"
-    if int(stat['defense']) >= 0 and int(stat['defense'])<10:
-        bar1="🛡️                                    "
-    if int(stat['defense']) >= 10 and int(stat['defense'])<20:
-        bar1="🛡️                                    "
-    elif int(stat['defense']) >= 20 and int(stat['defense'])<30:
-        bar1="🛡️ 🛡️                                 "
-    elif int(stat['defense']) >= 30 and int(stat['defense'])<40:
-        bar1="🛡️ 🛡️ 🛡️                              "
-    elif int(stat['defense']) >= 40 and int(stat['defense'])<50:
-        bar1="🛡️ 🛡️ 🛡️ 🛡️                           "
-    elif int(stat['defense']) == 50:
-        bar1="🛡️ 🛡️ 🛡️ 🛡️ 🛡️                        "
-    bar2 = ("attaque")
-    if int(stat['attaque']) >= 0 and int(stat['attaque'])<10:
-        bar2="⚔️                                    "
-    if int(stat['attaque']) >= 10 and int(stat['attaque'])<20:
-        bar2="⚔️                                    "
-    elif int(stat['attaque']) >= 20 and int(stat['attaque'])<30:
-        bar2="⚔️ ⚔️                                 "
-    elif int(stat['attaque']) >= 30 and int(stat['attaque'])<40:
-        bar2="⚔️ ⚔️ ⚔️                             "
-    elif int(stat['attaque']) >= 40 and int(stat['attaque'])<50:
-        bar2="⚔️ ⚔️ ⚔️ ⚔️                          "
-    elif int(stat['attaque']) >= 50:
-        bar2="⚔️ ⚔️ ⚔️ ⚔️ ⚔️                       "
-    print("Attaque: ",bar2,"| Défense :", bar1)
-    bar3 = ("chance")
-    if int(stat['chance']) >= 0 and int(stat['chance'])<10:
-        bar3="🍀                                     "
-    elif int(stat['chance']) >= 10 and int(stat['chance'])<40:
-        bar3="🍀 🍀                                  "
-    elif int(stat['chance']) >= 40 and int(stat['chance'])<70:
-        bar3="🍀 🍀 🍀                               "
-    elif int(stat['chance']) >= 70 and int(stat['chance'])<75:
-        bar3="🍀 🍀 🍀 🍀                           "
-    elif int(stat['chance']) == 75:  
-        bar3="🍀 🍀 🍀 🍀 🍀                        "
-    print("Vie :", bar,"| Chance: ",bar3)
-    affichage_inventaire(inv)
+    print("Attaque: ",barAttaque,f"({statsJoueur[5]})\t | Défense :", barDefense,f"({statsJoueur[6]})")
+    print("Vie :", barVie,f"({statsJoueur[4]})\t | Chance: ",barChance,f"({statsJoueur[7]})")
+    
+    affichage_inventaire()
+    
     print("-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'")
 
-def check_objet_vie(specification,stat,inv,vie_objet):
-    print(Fore.RED)
-    print("Vous avez regagné ",vie_objet," nouveaux points de vie.")
-    print(Style.RESET_ALL)
-    vie_joueur = int(stat['vie'])
-    vie_joueur += vie_objet
-    if vie_joueur>100:                               #VIE
-        vie_joueur=100
+def check_objet_vie(vieObjet):
+
+    
+    update_joueur(vie=vieObjet)
+
+    if afficher_joueur()[get_use()-1][4] > 100:                               #VIE
+        update_joueur(vie = afficher_joueur[get_use()-1][4]) - (afficher_joueur[get_use()-1][4] - 100)
         print("Vous êtes au TOP de votre forme!")
-    stat['vie'] = vie_joueur
+
+    print(Fore.RED)
+    print("Vous avez regagné ",vieObjet," nouveaux points de vie.")
+    print(Style.RESET_ALL)
+
 
 def check_objet_chance(specification,stat,inv,chance):
     print("Vous avez obtenu ",chance," nouveaux points de chance.")
@@ -240,7 +270,7 @@ def objet_chanceux(stat,ind):
         stat['chance'] = pv_plr
         print("Au passage, vous perdez ",int(objets[ind]['chance'])," points de chance rabaissant ces derniers à ", stat['chance'],".")
 
-from colorama import Fore,Style
+
 def enlever(specification,stat,inv,arme,armure):
     try:
         if (arme != []) or (armure != []):
@@ -320,64 +350,49 @@ def enlever(specification,stat,inv,arme,armure):
         inventory_main(specification,stat,inv,arme,armure)
 
 
-def jeter(specification,stat,inv,arme,armure):
-    if inv != {}:
-        P=[]
-        for value in inv.items():
-            P.append(value)
-        affichage_inventaire(inv)
-        print("'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'")
+def jeter():
+    """
+    Cette fonction permet de jeter des objets.
+    """
+    inventaireJoueur = afficher_inventaire()
+    
+    if inventaireJoueur == 0:
+        print("Il n'y a plus rien à jeter! \n'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'")
+        return 0
+    
+    ajeter = -1
+    while (ajeter < 0 or ajeter >= len(inventaireJoueur)):
         try:
-            ajeter = -1
-            while (ajeter < 0):
-                try:
-                    ajeter = int(input("Que voulez vous jeter? Selectionnez l'objet à supprimer, ou tapez 0 pour revenir en arrière. -> "))
-                except ValueError or (ajeter > len(list(inv))+1):
-                    print(Fore.RED + "Entrez un nombre correct.")
-                    print(Style.RESET_ALL)
-            if list(inv)[ajeter-1] in inv:
-                if ajeter != 0:
-                    nom_choix_j = list(inv)[ajeter-1]
-                    initial = inv[nom_choix_j]
-                    if nom_choix_j in inv:
-                        if inv[nom_choix_j] > 0:
-                            nbr=-1
-                            while (nbr < 0):
-                                try:
-                                    nbr = int(input("Combien voulez-vous en jeter? -> "))
-                                except ValueError:
-                                    print(Fore.RED + "Entrez un nombre correct.")
-                                    print(Style.RESET_ALL)
-                                    jeter(specification,stat,inv,arme,armure)
-                            nbr_0 = initial - inv[nom_choix_j]
-                            inv[nom_choix_j] -= nbr
-                            if inv[nom_choix_j] <= 0:
-                                del inv[nom_choix_j]
-                                print("Vous avez supprimé ",initial , nom_choix_j,".")
-                            else:
-                                print("Vous avez supprimé ",nbr , nom_choix_j,".")
-                            jeter(specification,stat,inv,arme,armure)
-                        else:
-                            print("Vous n'avez pas cet objet.")
-                            inventory_main(specification,stat,inv,arme,armure)
-                    else:
-                    
-                        print("Vous n'avez pas cet objet.")
-                        inventory_main(specification,stat,inv,arme,armure)
-                else:
-                    inventory_main(specification,stat,inv,arme,armure)
-        except IndexError:
-            print(Fore.RED + "Entrez un nombre correct, d'un objet présent dans l'inventaire.")
-            print(Style.RESET_ALL)
-            jeter(specification,stat,inv,arme,armure)
-            
-            
-    else:
-        print("Votre inventaire est vide, vous ne pouvez rien jeter...")
-        inventory_main(specification,stat,inv,arme,armure)
+            ajeter = int(input("Que voulez vous jeter? Selectionnez l'objet à supprimer, ou tapez 0 pour revenir en arrière. -> "))
+        except ValueError:
+            print(Fore.RED + "Entrez un nombre correct." + Style.RESET_ALL)
 
-def inventory_main(specification,stat,inv):
-    affichage_stats(specification,stat,inv)
+        if ajeter != 0:
+            quantiteInitial = inventaireJoueur[ajeter-1][2]
+                
+            nbr=-1
+            #tant que le nombre choisi n'est pas valide (pas dans l'inventaire)
+            while (nbr < 0 or nbr > quantiteInitial):
+                try:
+                    nbr = int(input("Combien voulez-vous en jeter? -> "))
+                except ValueError:
+                    print(Fore.RED + "Entrez un nombre correct." + Style.RESET_ALL)
+
+            #on enlève ce que le joueur veut jeter
+            update_inventaire(nom=inventaireJoueur[ajeter-1][1], quantite=-nbr)
+
+            print("Vous avez supprimé ",quantiteInitial , inventaireJoueur[ajeter-1][1],".")
+            #on redemande
+            return jeter()
+        
+        # revenir en arrière
+        return inventory_main()
+
+def inventory_main():
+    """
+    Cette fonction gère l'inventaire tout entier.
+    """
+    affichage_stats()
     print("ACTIONS :")
     print("\t 1. ÉQUIPER / UTILISER")
     print("\t 2. ENLEVER (ARME/ARMURE)")
@@ -388,10 +403,12 @@ def inventory_main(specification,stat,inv):
     while ((choice != "1") and (choice != "2") and (choice !="3") and (choice != "4")):
         choice = input("Que voulez-vous faire? -> ")
     if choice == "1":
-        inventory_equip(specification,stat,inv)
+        return inventory_equip()
     elif choice == "2":
-        enlever(specification,stat,inv)
+        return enlever()
     elif choice == "3":
-        jeter()
+        print("jeter")
+        return jeter()
+
     elif choice == "4":
         return "ANNULER"

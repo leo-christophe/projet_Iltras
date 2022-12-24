@@ -168,11 +168,11 @@ def boutique_acheter(boutique):
 
                 # On ajoute l'objet dans l'inventaire du joueur
                 if Boutique.inventaire == 0:
-                    update_inventaire(choix_nom, quantiteAchetee)
-                elif choix_nom in Boutique.inventaire:
                     ajouter_inventaire(choix_nom, quantiteAchetee)
-                else:
+                elif choix_nom in Boutique.inventaire:
                     update_inventaire(choix_nom, quantiteAchetee)
+                else:
+                    ajouter_inventaire(choix_nom, quantiteAchetee)
 
                 #? On redéfinit argentJoueur après avoir enlever l'argent
                 argentJoueur = afficher_joueur()[id][8]
@@ -248,8 +248,8 @@ def boutique_debut(boutique):
         return -1
     # CHOIX : REGARDER INVENTAIRE
     elif choix_march == 4:  
-        inventory_main(0, Boutique.inventaire)
-        boutique_debut(boutique, Boutique.inventaire)
+        inventory_main()
+        boutique_debut(boutique)
     return -1
-#boutique_debut(0)
+boutique_debut(0)
 
